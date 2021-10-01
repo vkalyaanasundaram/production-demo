@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.15",
+    "@loadable/component": "^5.15.0",
     "@next/bundle-analyzer": "^11.1.2",
     "@svgr/webpack": "^5.5.0",
     "eslint-config-next": "^11.1.2",
