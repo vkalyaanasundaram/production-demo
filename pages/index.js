@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import loadable from "@loadable/component";
 import Footer from "../components/Footer";
-// import Header from "../components/Header";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
 import { bgWrap, bgText } from "../styles/Home.module.css";
 
