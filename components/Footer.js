@@ -1,4 +1,39 @@
+import Link from "next/link";
+import useSWR from "swr";
+import { request } from "graphql-request";
+import { useRouter } from "next/router";
+
+const fetcher = (query) =>
+  request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
+
 const Footer = () => {
+  const router = useRouter();
+
+  const { data, error } = useSWR(
+    `query ProductServiceQry {
+        productsServices(where: {status: PUBLISH, orderby: {field: TITLE, order: ASC}}) {
+          nodes {
+            slug
+            title
+          }
+        }
+        menuItems(where: {location: HCMS_MENU_FOOTER}) {
+          nodes {
+            url
+            label
+          }
+        }
+      }`,
+    fetcher
+  );
+
+  if (error) return <div> error.... </div>;
+  if (!data) return <div> Loading.... </div>;
+  console.log(data);
+
+  const footerMenu = data?.menuItems?.nodes;
+  const productMenus = data?.productsServices?.nodes;
+
   return (
     <>
       <footer className="text-gray-600 body-font">
@@ -6,82 +41,48 @@ const Footer = () => {
           <div className="flex flex-wrap md:text-left text-center order-first">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-                CATEGORIES
+                <Link href="/about-us" passHref>
+                  ABOUT US
+                </Link>
               </h2>
               <nav className="list-none mb-10">
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    First Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
-                  </a>
-                </li>
+                {footerMenu.map((value, index) => (
+                  <div className="text-gray-50" key={index}>
+                    <li className="text-black text-base leading-8">
+                      <Link href={value.url} passHref>
+                        {value.label}
+                      </Link>
+                    </li>
+                  </div>
+                ))}
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-                CATEGORIES
+                PRODUCTS
               </h2>
               <nav className="list-none mb-10">
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    First Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
-                  </a>
-                </li>
+                {productMenus.map((value, index) => (
+                  <div className="text-gray-50" key={index}>
+                    <li className="text-black text-base leading-8">
+                      <Link href={"/products-services/" + value.slug} passHref>
+                        {value.title}
+                      </Link>
+                    </li>
+                  </div>
+                ))}
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
-                CATEGORIES
+                CONTACT US
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    First Link
-                  </a>
+                  <a className="text-gray-600 hover:text-gray-800">Call Us</a>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
-                  </a>
+                  <a className="text-gray-600 hover:text-gray-800">Email</a>
                 </li>
               </nav>
             </div>

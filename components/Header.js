@@ -1,40 +1,39 @@
-// import useSWR from "swr";
-// import { request } from "graphql-request";
+import useSWR from "swr";
+import { request } from "graphql-request";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
 
-// const fetcher = (query) =>
-//   request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
+const fetcher = (query) =>
+  request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
 
 const Header = () => {
-  // const { data, error } = useSWR(
-  //   `{
-  //       menu(id: "3", idType: DATABASE_ID) {
-  //           id
-  //           databaseId
-  //           name
-  //           menuItems {
-  //             edges {
-  //               node {
-  //                 id
-  //                 label
-  //                 parentId
-  //                 url
-  //               }
-  //             }
-  //           }
-  //       }
-  //     }`,
-  //   fetcher
-  // );
+  const { data, error } = useSWR(
+    `{
+        menu(id: "3", idType: DATABASE_ID) {
+            id
+            databaseId
+            name
+            menuItems {
+              edges {
+                node {
+                  id
+                  label
+                  parentId
+                  url
+                }
+              }
+            }
+        }
+      }`,
+    fetcher
+  );
 
-  // if (error) return <div> error.... </div>;
-  // if (!data) return <div> Loading.... </div>;
+  if (error) return <div> error.... </div>;
+  if (!data) return <div> Loading.... </div>;
 
-  // const primaryMenus = data?.menu?.menuItems?.edges;
-  // console.log(primaryMenus);
+  const primaryMenus = data?.menu?.menuItems?.edges;
 
   return (
     <>
@@ -48,18 +47,11 @@ const Header = () => {
             <span className="ml-3 text-xl">KAPITUS</span>
           </Link>
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-            {/* {primaryMenus.map(({ node }, index) => (
+            {primaryMenus.map(({ node }, index) => (
               <span className="text-gray-50 px-4" key={index}>
                 <Link href={node.url}>{node.label}</Link>
               </span>
-            ))} */}
-            <span className="text-gray-50 px-4">
-              <Link href="/problems">Problems We Solve</Link>
-              <Link href="/products-we-offer">Products We Offer</Link>
-              <Link href="/partner">Partner With Us</Link>
-              <Link href="/blog">Blog</Link>
-              <Link href="/fast-application">APPLY NOW</Link>
-            </span>
+            ))}
           </nav>
         </div>
       </header>

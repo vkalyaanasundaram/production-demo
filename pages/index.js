@@ -1,13 +1,49 @@
 import Head from "next/head";
 import Image from "next/image";
-import loadable from "@loadable/component";
-import Footer from "../components/Footer";
+// import loadable from "@loadable/component";
+import dynamic from "next/dynamic";
+
+// import Footer from "../components/Footer";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
 import { bgWrap, bgText } from "../styles/Home.module.css";
 
-const Header = loadable(() => import("../components/Header"));
+// const Header = loadable(() => import("../components/Header"));
+// const Footer = loadable(() => import("../components/Footer"));
+
+const Header = dynamic(() => import("../components/Header"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
+
+const Footer = dynamic(() => import("../components/Footer"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
 
 export default function Home() {
+  const toBase64 = (str) =>
+    typeof window === "undefined"
+      ? Buffer.from(str).toString("base64")
+      : window.btoa(str);
+
+  const shimmer = (w, h) => `
+  <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <linearGradient id="g">
+        <stop stop-color="#333" offset="20%" />
+        <stop stop-color="#222" offset="50%" />
+        <stop stop-color="#333" offset="70%" />
+      </linearGradient>
+    </defs>
+    <rect width="${w}" height="${h}" fill="#333" />
+    <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+    <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+  </svg>`;
+
   return (
     <>
       <Header />
@@ -19,6 +55,10 @@ export default function Home() {
             layout="fill"
             objectFit="cover"
             quality={100}
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(700, 475)
+            )}`}
           />
         </div>
         <div className={bgText}>

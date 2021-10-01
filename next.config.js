@@ -1,5 +1,8 @@
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['kap-staging.us'],
+  },
   env: {
     WP_HEADLESS_SECRET: "adb05f33-6f44-4433-9e79-9f995018b28a",
     WORDPRESS_GRAPHQL_ENDPOINT: "https://kap-staging.us/graphql",
