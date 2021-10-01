@@ -1,11 +1,28 @@
 import Head from "next/head";
 import Image from "next/image";
-import loadable from "@loadable/component";
-import Footer from "../components/Footer";
+// import loadable from "@loadable/component";
+import dynamic from "next/dynamic";
+
+// import Footer from "../components/Footer";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
 import { bgWrap, bgText } from "../styles/Home.module.css";
 
-const Header = loadable(() => import("../components/Header"));
+// const Header = loadable(() => import("../components/Header"));
+// const Footer = loadable(() => import("../components/Footer"));
+
+const Header = dynamic(() => import("../components/Header"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
+
+const Footer = dynamic(() => import("../components/Footer"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
 
 export default function Home() {
   const toBase64 = (str) =>
