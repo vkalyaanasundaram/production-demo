@@ -81,7 +81,7 @@ const AcfData = ({ data }) => {
           {ReactHtmlParser(blogData?.blogContent)}
         </div>
       </div>
-      <div className="xs:w-full sm:w-full md:w-full lg:w-1/4 float-left border-gray-200 ">
+      <div className="xs:hidden lg:w-1/4 float-left border-gray-200 ">
         <RecentBlogs />
         <BlogCategories />
       </div>

@@ -89,7 +89,7 @@ export default function InfiniteScrollList() {
         </Head>
         <Header />
       </div>
-      <div className="w-3/4 float-left border-2 border-gray-200 ">
+      <div className="xs:w-full md:w-3/4 float-left border-2 border-gray-200 ">
         <InfiniteScroll
           dataLength={posts.length}
           next={fetchMorePosts}
@@ -123,7 +123,7 @@ export default function InfiniteScrollList() {
         <div></div>
       </div>
 
-      <div className=" w-1/4 float-left border-2 border-gray-200 ">
+      <div className="xs:hidden md:w-1/4 float-left border-2 border-gray-200 ">
         {/* <RecentBlogs /> */}
         <BlogCategories />
       </div>
