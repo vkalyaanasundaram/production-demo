@@ -34,7 +34,6 @@ const Header = () => {
   if (!data) return <div> Loading.... </div>;
 
   const primaryMenus = data?.menu?.menuItems?.edges;
-  // console.log(primaryMenus);
 
   return (
     <>
@@ -53,13 +52,6 @@ const Header = () => {
                 <Link href={node.url}>{node.label}</Link>
               </span>
             ))}
-            {/* <span className="text-gray-50 px-4" key={index}>
-              <Link href="/problems">Problems We Solve</Link>
-              <Link href="/products-we-offer">Products We Offer</Link>
-              <Link href="/partner">Partner With Us</Link>
-              <Link href="/blog">Blog</Link>
-              <Link href="/fast-application">APPLY NOW</Link>
-            </span> */}
           </nav>
         </div>
       </header>
