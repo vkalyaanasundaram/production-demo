@@ -20,4 +20,5 @@ const FinanceSolution = () => {
     </div>
   );
 };
+
 export default FinanceSolution;
