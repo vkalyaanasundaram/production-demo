@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-
 const FinanceSolution = () => {
   return (
-    <div className="xs: w-full px-5 md:w-full float-left px-10 justify-content-md-center mt-5 mb-5">
+    <div
+      fluid
+      className="xs: w-full px-5 md:w-full float-left px-10 justify-content-md-center mt-5 mb-5"
+    >
       <div className="my-3">
         <h2 className="h2-title">FIND YOUR FINANCING SOLUTION</h2>
         <div>
