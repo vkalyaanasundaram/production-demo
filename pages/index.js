@@ -178,6 +178,14 @@ export default function Home() {
         </div>
       </section>
       <section>
+        <div className="xs:w-full container px-5 py-24 mx-auto">
+          <script
+            defer
+            src="https://cdn.trustindex.io/loader.js?09a5ee4135268498715860a5eb"
+          ></script>
+        </div>
+      </section>
+      <section>
         <div className="xs:w-full container px-5 py-24 mx-auto" ref={observe}>
           {inView && (
             <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
@@ -188,7 +196,7 @@ export default function Home() {
       <section className="text-gray-600 body-font text-center">
         <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
           <div className="xs:w-full" ref={observe}>
-            {/* {inView && <FinanceSolution />} */}
+            {inView && <FinanceSolution />}
           </div>
         </div>
       </section>
