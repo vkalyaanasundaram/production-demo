@@ -112,10 +112,7 @@ export default function InfiniteScrollList() {
                         alt="Blogs Image"
                       />
                     )}
-                    <div
-                      className="text-lg text-blue-900 text-left"
-                      style={{ width: 300 }}
-                    >
+                    <div className="xs:text-center mx-10 md:text-lg text-blue-900 text-left ">
                       {ReactHtmlParser(key.title.substring(0, 50))}...
                     </div>
                   </div>
