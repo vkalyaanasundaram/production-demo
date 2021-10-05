@@ -111,6 +111,7 @@ const SinglePage = () => {
   } else {
     return (
       <>
+        <Header />
         {/* <Banner data={data?.page?.ThreeColumnStaticPage?.banner} /> */}
         <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
         <FinanceSolutions />
