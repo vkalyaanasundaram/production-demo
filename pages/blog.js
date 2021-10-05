@@ -89,43 +89,47 @@ export default function InfiniteScrollList() {
         </Head>
         <Header />
       </div>
-      <div className="xs:w-full md:w-3/4 float-left border-2 border-gray-200 ">
-        <InfiniteScroll
-          dataLength={posts.length}
-          next={fetchMorePosts}
-          hasMore={haveMorePosts}
-          loader={<p>Loading...</p>}
-          endMessage={<p>✅ All posts loaded.</p>}
-        >
-          <div className="grid grid-cols-3 gap-4 mt-10">
-            {posts?.map((key, index) => (
-              <Link href={`/blog/${key.slug}`} passHref key={index}>
-                <div className="text-center">
-                  {key?.featuredImage?.node?.sourceUrl.length > 0 && (
-                    <Image
-                      src={key?.featuredImage?.node?.sourceUrl}
-                      width={250}
-                      height={150}
-                      alt="Blogs Image"
-                    />
-                  )}
-                  <div
-                    className="text-lg text-blue-900 text-left"
-                    style={{ width: 300 }}
-                  >
-                    {ReactHtmlParser(key.title.substring(0, 50))}...
+      {/* <div className="xs:grid-cols-1 md:grid-cols-1"> */}
+      {/* <div className="xs:w-full md:w-3/4 border-2 border-gray-200 "> */}
+      <div className="flex flex-col md:flex-row">
+        <div className="xs:w-full md:w-3/4 border-2 border-gray-200 ">
+          <InfiniteScroll
+            dataLength={posts.length}
+            next={fetchMorePosts}
+            hasMore={haveMorePosts}
+            loader={<p>Loading...</p>}
+            endMessage={<p>✅ All posts loaded.</p>}
+          >
+            <div className="xs:grid grid-col-1 w-full mt-10 md:grid grid-cols-3 gap-4 mt-10">
+              {posts?.map((key, index) => (
+                <Link href={`/blog/${key.slug}`} passHref key={index}>
+                  <div className="text-center">
+                    {key?.featuredImage?.node?.sourceUrl.length > 0 && (
+                      <Image
+                        src={key?.featuredImage?.node?.sourceUrl}
+                        width={250}
+                        height={150}
+                        alt="Blogs Image"
+                      />
+                    )}
+                    <div
+                      className="text-lg text-blue-900 text-left"
+                      style={{ width: 300 }}
+                    >
+                      {ReactHtmlParser(key.title.substring(0, 50))}...
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </InfiniteScroll>
-        <div></div>
-      </div>
+                </Link>
+              ))}
+            </div>
+          </InfiniteScroll>
+          <div></div>
+        </div>
 
-      <div className="xs:hidden md:w-1/4 float-left border-2 border-gray-200 ">
-        {/* <RecentBlogs /> */}
-        <BlogCategories />
+        <div className="xs:hidden md:w-1/4 border-2 border-gray-200 ">
+          {/* <RecentBlogs /> */}
+          <BlogCategories />
+        </div>
       </div>
       {/* <Footer /> */}
     </>
