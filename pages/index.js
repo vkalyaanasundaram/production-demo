@@ -8,6 +8,12 @@ import useSWR from "swr";
 import { request } from "graphql-request";
 import { useRouter } from "next/router";
 import useInView from "react-cool-inview";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
 
 const fetcher = (query) =>
   request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
@@ -105,25 +111,46 @@ export default function Home() {
 
   const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
   const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
-  const bannerImg = bannerContent?.bannerImage?.sourceUrl;
+  const BannerImg = bannerContent?.bannerImage?.sourceUrl;
+  const MobileBannerImage = bannerContent?.mobileBannerImage?.sourceUrl;
 
   return (
     <>
       <Header />
       <section className="relative">
         <div className={bgWrap}>
-          {bannerImg.length > 0 && (
-            <Image
-              alt="Mountains"
-              src={bannerImg}
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(700, 475)
-              )}`}
-            />
+          {MobileBannerImage.length > 0 && (
+            <MobileView>
+              {" "}
+              <Image
+                alt="Mountains"
+                src={MobileBannerImage}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+              />
+            </MobileView>
+          )}
+
+          {BannerImg.length > 0 && (
+            <BrowserView>
+              {" "}
+              <Image
+                alt="Mountains"
+                src={BannerImg}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+              />
+            </BrowserView>
           )}
         </div>
         <div className={bgText}>
@@ -161,7 +188,7 @@ export default function Home() {
       <section className="text-gray-600 body-font text-center">
         <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
           <div className="xs:w-full" ref={observe}>
-            {inView && <FinanceSolution />}
+            {/* {inView && <FinanceSolution />} */}
           </div>
         </div>
       </section>
