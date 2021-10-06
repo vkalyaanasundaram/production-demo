@@ -81,6 +81,9 @@ export default function Banner({ data }) {
               <div className="sm:w-full text-5xl xs:w-full text-5xl md:text-5xl">
                 {data?.bannerTitle}
               </div>
+              <div className="xs:text-xl m-10 lg:text-2xl text-green-900">
+                {ReactHtmlParser(data?.bannerDescription)}
+              </div>
               <div className="sm:text-lg xs:text-sm mt-5 md:text-2xl text-blue-900">
                 {ReactHtmlParser(data?.bannerButton)}
               </div>

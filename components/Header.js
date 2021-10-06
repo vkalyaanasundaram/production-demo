@@ -21,27 +21,13 @@ const Header = () => {
 
   return (
     <>
-      {/* <header className="text-gray-600 body-font bg-indigo-900">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <Link
-            className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
-            href="/"
-            passHref
-          >
-            <span className="ml-3 text-xl">KAPITUS</span>
-          </Link>
-          <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-            {primaryMenus.map(({ node }, index) => (
-              <span className="text-gray-50 px-4" key={index}>
-                <Link href={node.url}>{node.label}</Link>
-              </span>
-            ))}
-          </nav>
-        </div>
-      </header> */}
       <nav className=" bg-indigo-900 flex items-center justify-between flex-wrap bg-teal-500 p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <span className="font-semibold text-xl tracking-tight">KAPIUTS</span>
+          <span className="font-semibold text-xl tracking-tight">
+            <Link href="/" passHref>
+              KAPIUTS
+            </Link>
+          </span>
         </div>
         <div className="block lg:hidden">
           <button
