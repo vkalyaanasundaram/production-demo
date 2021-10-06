@@ -6,20 +6,30 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { request } from "graphql-request";
 import { useState } from "react";
+import useInView from "react-cool-inview";
 
-// import Banner from "../components/banner";
-// import ProductBanner from '../components/products/banner'
-// import Products from '../components/products'
-import Content from "../components/Content";
-// import Accordion from '../components/Accordion'
+// import Content from "../components/Content";
 import FinanceSolutions from "../components/FinanceSolution";
 import ContactUs from "../components/pages/ContactUs";
 import MediaCenter from "../components/pages/MediaCenter";
+
+const Content = dynamic(() => import("../components/Content"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function SinglePage() {
   // const { data, error } = useSWR("./api/page/problems-we-solve", fetcher);
   const { asPath, pathname } = useRouter();
+
+  const { observe, inView } = useInView({
+    onEnter: ({ unobserve }) => unobserve(), // only run once
+    onLeave: ({ observe }) => observe(),
+  });
 
   const { data, error } = useSWR(`/api/page/${asPath}`, fetcher);
 
@@ -34,27 +44,29 @@ export default function SinglePage() {
       return (
         <>
           <Header />
-          <Content data={ThreeColumnStaticPage?.cards} />;
+          {inView && <Content data={ThreeColumnStaticPage?.cards} />}
         </>
       );
     case "/partner":
       return (
         <>
           <Header />
-          <Content data={ThreeColumnStaticPage?.cards} />;
+          {inView && <Content data={ThreeColumnStaticPage?.cards} />}
         </>
       );
     case "/contact-us":
       return (
         <>
+          <Header />
           <ContactUs data={ACFcontact} />
         </>
       );
     default:
       return (
         <>
-          <Content data={ThreeColumnStaticPage?.cards} />
-          <FinanceSolutions />
+          <Header />
+          {inView && <Content data={ThreeColumnStaticPage?.cards} />}
+          {inView && <FinanceSolutions />}
         </>
       );
   }
