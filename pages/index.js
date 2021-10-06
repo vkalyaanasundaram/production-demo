@@ -192,7 +192,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {inView && <Footer />}
+      <div className="xs:w-full" ref={observe}>
+        {inView && <Footer />}
+      </div>
     </>
   );
 }

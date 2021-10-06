@@ -53,8 +53,10 @@ export default function SinglePage() {
         <>
           <Header />
           <Banner data={BannerData} />
-          <Content data={ThreeColumnStaticPage?.cards} />
-          <Footer />
+          <div ref={observe}>
+            <Content data={ThreeColumnStaticPage?.cards} />
+          </div>
+          <div ref={observe}>{inView && <Footer />}</div>
         </>
       );
     case "/partner":
@@ -62,8 +64,10 @@ export default function SinglePage() {
         <>
           <Header />
           <Banner data={BannerData} />
-          {inView && <Content data={ThreeColumnStaticPage?.cards} />}
-          <Footer />
+          <div ref={observe}>
+            {inView && <Content data={ThreeColumnStaticPage?.cards} />}
+          </div>
+          <div ref={observe}>{inView && <Footer />}</div>
         </>
       );
     case "/contact-us":
@@ -71,7 +75,7 @@ export default function SinglePage() {
         <>
           <Header />
           <ContactUs data={ACFcontact} />
-          <Footer />
+          <div ref={observe}>{inView && <Footer />} </div>
         </>
       );
     default:
@@ -79,9 +83,13 @@ export default function SinglePage() {
         <>
           <Header />
           <Banner data={BannerData} />
-          {inView && <Content data={ThreeColumnStaticPage?.cards} />}
-          {inView && <FinanceSolutions />}
-          <Footer />
+          <div ref={observe}>
+            {inView && <Content data={ThreeColumnStaticPage?.cards} />}
+          </div>
+          <div ref={observe}>
+            <FinanceSolutions />}
+          </div>
+          <div ref={observe}>{inView && <Footer />}</div>
         </>
       );
   }
