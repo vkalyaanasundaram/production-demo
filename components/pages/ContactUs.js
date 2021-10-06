@@ -25,12 +25,7 @@ const shimmer = (w, h) => `
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
 
-const Header = dynamic(() => import("../Header"), {
-  loading: function ld() {
-    return <p>Loading...</p>;
-  },
-  ssr: false,
-});
+const Header = import("../Header");
 
 const ContactUs = (data) => {
   const contactData = data;
