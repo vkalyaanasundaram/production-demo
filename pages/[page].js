@@ -12,8 +12,15 @@ import useInView from "react-cool-inview";
 import FinanceSolutions from "../components/FinanceSolution";
 import ContactUs from "../components/pages/ContactUs";
 import MediaCenter from "../components/pages/MediaCenter";
+import Banner from "../components/Banner";
 
 const Content = dynamic(() => import("../components/Content"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
+const Footer = dynamic(() => import("../components/Footer"), {
   loading: function ld() {
     return <p>Loading...</p>;
   },
@@ -36,6 +43,7 @@ export default function SinglePage() {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const ThreeColumnStaticPage = data?.ThreeColumnStaticPage;
+  const BannerData = data?.ThreeColumnStaticPage?.banner;
   const ACFcontact = data?.ACFcontact;
   const AccordionData = data?.accordionData;
   // alert(asPath  );
@@ -44,14 +52,18 @@ export default function SinglePage() {
       return (
         <>
           <Header />
-          {inView && <Content data={ThreeColumnStaticPage?.cards} />}
+          <Banner data={BannerData} />
+          <Content data={ThreeColumnStaticPage?.cards} />
+          <Footer />
         </>
       );
     case "/partner":
       return (
         <>
           <Header />
+          <Banner data={BannerData} />
           {inView && <Content data={ThreeColumnStaticPage?.cards} />}
+          <Footer />
         </>
       );
     case "/contact-us":
@@ -59,14 +71,17 @@ export default function SinglePage() {
         <>
           <Header />
           <ContactUs data={ACFcontact} />
+          <Footer />
         </>
       );
     default:
       return (
         <>
           <Header />
+          <Banner data={BannerData} />
           {inView && <Content data={ThreeColumnStaticPage?.cards} />}
           {inView && <FinanceSolutions />}
+          <Footer />
         </>
       );
   }

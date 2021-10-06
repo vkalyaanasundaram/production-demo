@@ -13,7 +13,20 @@
   padding-top: 3vh;
   text-shadow: 1px 1px 1px #3c5c5e;
 }
-
+.ContentNav {
+  height: 100vh;
+}
+.StaticContent {
+  position: absolute;
+  top: 66%;
+}
+.FooterNav {
+  height: 100vh;
+}
+.FooterContent {
+  position: absolute;
+  top: 66%;
+}
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;

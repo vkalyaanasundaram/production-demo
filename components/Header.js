@@ -5,37 +5,19 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
 
-const fetcher = (query) =>
-  request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Header = () => {
+  const { asPath, pathname } = useRouter();
   const [isMenuVisible, setMenuVisibility] = useState(false);
+  const { data, error } = useSWR("/api/page/header", fetcher);
 
-  const { data, error } = useSWR(
-    `{
-        menu(id: "3", idType: DATABASE_ID) {
-            id
-            databaseId
-            name
-            menuItems {
-              edges {
-                node {
-                  id
-                  label
-                  parentId
-                  url
-                }
-              }
-            }
-        }
-      }`,
-    fetcher
-  );
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+  // console.log(data);
 
-  if (error) return <div> error.... </div>;
-  if (!data) return <div> Loading.... </div>;
-
-  const primaryMenus = data?.menu?.menuItems?.edges;
+  const primaryMenus = data?.menuItems?.edges;
+  // console.log(primaryMenus);
 
   return (
     <>

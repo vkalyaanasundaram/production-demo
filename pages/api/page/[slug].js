@@ -22,7 +22,10 @@ export default async (req, resp) => {
                   bannerTitle
                   fieldGroupName
                   bannerImage {
-                  sourceUrl
+                    sourceUrl
+                  }
+                  mobileBannerImage {
+                    sourceUrl
                   }
               }
               financeSolution
@@ -37,6 +40,9 @@ export default async (req, resp) => {
               form
               image {
                   sourceUrl
+              }
+              mobileImage {
+                sourceUrl
               }
             }
         }
