@@ -47,7 +47,7 @@ const ContactUs = (data) => {
     });
   });
 
-  console.log(contactData);
+  // console.log(contactData);
   return (
     <div className="bg-gray-100">
       <Header />
