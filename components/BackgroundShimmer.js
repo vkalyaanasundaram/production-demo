@@ -1,5 +1,5 @@
 export default function BackgroundShimmer() {
-    const toBase64 = (str) =>
+const toBase64 = (str) =>
     typeof window === "undefined"
       ? Buffer.from(str).toString("base64")
       : window.btoa(str);

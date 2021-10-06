@@ -75,7 +75,7 @@ export default function SinglePage() {
         <>
           <Header />
           <ContactUs data={ACFcontact} />
-          <div ref={observe}>{inView && <Footer />} </div>
+          <div ref={observe}>{inView && <Footer />}</div>
         </>
       );
     default:
@@ -86,9 +86,7 @@ export default function SinglePage() {
           <div ref={observe}>
             {inView && <Content data={ThreeColumnStaticPage?.cards} />}
           </div>
-          <div ref={observe}>
-            <FinanceSolutions />}
-          </div>
+          <div ref={observe}>{inView && <FinanceSolutions />}</div>
           <div ref={observe}>{inView && <Footer />}</div>
         </>
       );
