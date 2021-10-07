@@ -13,6 +13,8 @@ import FinanceSolutions from "../components/FinanceSolution";
 import ContactUs from "../components/pages/ContactUs";
 import MediaCenter from "../components/pages/MediaCenter";
 import Banner from "../components/Banner";
+import ProductBanner from "../components/products/Banner";
+import Products from "../components/Products";
 
 const Content = dynamic(() => import("../components/Content"), {
   loading: function ld() {
@@ -43,10 +45,11 @@ export default function SinglePage() {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const ThreeColumnStaticPage = data?.ThreeColumnStaticPage;
+  const ProductsData = data?.productsAcf;
   const BannerData = data?.ThreeColumnStaticPage?.banner;
   const ACFcontact = data?.ACFcontact;
   const AccordionData = data?.accordionData;
-  // alert(asPath  );
+  // console.log(ProductsData);
   switch (asPath) {
     case "/problems-we-solve":
       return (
@@ -55,6 +58,19 @@ export default function SinglePage() {
           <Banner data={BannerData} />
           <div ref={observe}>
             <Content data={ThreeColumnStaticPage?.cards} />
+          </div>
+          <div ref={observe}>{inView && <Footer />}</div>
+        </>
+      );
+    case "/products-we-offer":
+      return (
+        <>
+          <Header />
+          <div ref={observe}>
+            <ProductBanner data={ProductsData} />
+            <div ref={observe}>
+              {inView && <Products data={ProductsData} />}
+            </div>
           </div>
           <div ref={observe}>{inView && <Footer />}</div>
         </>
