@@ -45,6 +45,32 @@ export default async (req, resp) => {
                 sourceUrl
               }
             }
+            productsAcf {
+                pageBanner {
+                    sourceUrl
+                    altText
+                }
+                mobileBannerImage {
+                  sourceUrl
+                }
+                bannerListItems {
+                  title
+                  listsItems
+                }
+                pageBannerDescription
+                pageBannerTitle
+                ourGoal
+                productsCards {
+                    cardContent
+                    cardTitle
+                    svgIcon {
+                      sourceUrl
+                    }
+                    cardButton
+                    cardSlug
+                }
+                getStartedToday
+            }
         }
     }`;
 
