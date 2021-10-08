@@ -14,6 +14,7 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
+import { contentNav } from "../styles/Home.module.css";
 
 const fetcher = (query) =>
   request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
@@ -178,15 +179,19 @@ export default function Home() {
         </div>
       </section>
       <section>
-        <div className="xs:w-full container px-5 py-24 mx-auto" ref={observe}>
-          {inView && (
-            <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
-          )}
+        <div className="xs:w-full container px-5 mx-auto" ref={observe}>
+          <div className={contentNav}>
+            <div className="container">
+              {inView && (
+                <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="text-gray-600 body-font text-center">
-        <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
+        <div className="container px-5 mx-auto flex flex-wrap items-center">
           <div className="xs:w-full" ref={observe}>
             {inView && <FinanceSolution />}
           </div>
