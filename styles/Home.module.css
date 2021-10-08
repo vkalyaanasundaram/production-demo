@@ -13,6 +13,20 @@
   padding-top: 3vh;
   text-shadow: 1px 1px 1px #3c5c5e;
 }
+.contentNav {
+  /* float: left;
+  margin-top: 700px; */
+  position: relative;
+  top: 700px;
+}
+h3.av-special-heading-tag {
+  font-size: 30px !important;
+  font-weight: bold;
+  color: rgb(4, 4, 95);
+}
+.tab-content p {
+  line-height: 30px;
+}
 .ContentNav {
   height: 100vh;
 }

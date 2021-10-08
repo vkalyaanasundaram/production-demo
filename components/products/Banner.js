@@ -10,9 +10,11 @@ import {
 } from "react-device-detect";
 
 export default function ProductsBanner({ data }) {
-  console.log(data);
+  // console.log(data);
   const BannerImg = data?.pageBanner?.sourceUrl;
   const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
+  const BannerList = data?.bannerListItems;
+  console.log(BannerList);
 
   const toBase64 = (str) =>
     typeof window === "undefined"
@@ -36,53 +38,90 @@ export default function ProductsBanner({ data }) {
   return (
     <>
       <section className="relative">
-        {MobileBannerImage?.length > 0 && (
-          <MobileView>
-            {" "}
-            <Image
-              alt="Mountains"
-              src={MobileBannerImage}
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(700, 475)
-              )}`}
-            />
-          </MobileView>
-        )}
+        <div className="opacity-40">
+          {MobileBannerImage?.length > 0 && (
+            <MobileView>
+              <Image
+                alt="Mountains"
+                src={MobileBannerImage}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+              />
+            </MobileView>
+          )}
 
-        {BannerImg?.length > 0 && (
-          <BrowserView>
-            <Image
-              alt="Mountains"
-              src={BannerImg}
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(700, 475)
-              )}`}
-            />
-          </BrowserView>
-        )}
+          {BannerImg?.length > 0 && (
+            <BrowserView>
+              <Image
+                alt="Mountains"
+                src={BannerImg}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+              />
+            </BrowserView>
+          )}
+        </div>
         <div className={bgText}>
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">
             <div className="text-blue-900 mb-10">
               <div className="sm:w-full text-5xl xs:w-full text-5xl md:text-5xl">
-                {data?.bannerTitle}
+                {data?.pageBannerTitle}
               </div>
               <div className="xs:text-xl m-10 lg:text-2xl text-green-900">
                 {ReactHtmlParser(data?.bannerDescription)}
               </div>
               <div className="sm:text-lg xs:text-sm mt-5 md:text-2xl text-blue-900">
-                {ReactHtmlParser(data?.bannerButton)}
+                {BannerList?.map((value, key) => (
+                  <div key={key}>
+                    <div className="my-2">{value?.title}</div>
+                    <div className="text-base leading-8">
+                      {ReactHtmlParser(value?.listsItems)}
+                    </div>
+                  </div>
+                ))}
+                {/* {ReactHtmlParser(data?.bannerButton)} */}
               </div>
 
               <div className="xs:text-xl mt-5 text-xs text-blue-900 text-left copyrights">
-                <p className="mt-5 text-xs">
+                <span className="xs:w-full float-left ">
+                  <Image
+                    title="25k"
+                    src="https://kap-staging.us/wp-content/uploads/2020/05/25k.svg"
+                    alt=""
+                    width={175}
+                    height={45}
+                  />
+                </span>
+                <span className="xs:w-full float-left ">
+                  <Image
+                    title="trustpilot"
+                    src="https://kap-staging.us/wp-content/uploads/2020/05/trustpilot.svg"
+                    alt=""
+                    width={175}
+                    height={45}
+                  />
+                </span>
+
+                <span className="xs:w-full float-left ">
+                  <Image
+                    title="billion"
+                    src="https://kap-staging.us/wp-content/uploads/2020/05/billion.svg"
+                    alt=""
+                    width={175}
+                    height={45}
+                  />
+                </span>
+                <p className="float-left mt-5 text-xs">
                   Copyright 2021 • Kapitus • All Rights Reserved Loans made in
                   California are issued by Strategic Funding Source, Inc. dba
                   Kapitus, pursuant to California Finance Lenders License No.
