@@ -37,7 +37,18 @@ const FAQ = dynamic(() => import("../../components/products/FAQ"), {
   },
   ssr: false,
 });
-
+const Who = dynamic(() => import("../../components/products/Who"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
+const How = dynamic(() => import("../../components/products/HowToApply"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
 export default function ProductPage() {
   const { router, asPath } = useRouter();
   // const { component } = router.query
@@ -56,6 +67,8 @@ export default function ProductPage() {
   const ProductDescription = data?.individualProducts?.businessLoanDescription;
   const ProductContent = data?.individualProducts?.productsContent;
   const RequirementsData = data?.individualProducts?.requirements;
+  const HowToApply = data?.individualProducts?.howToApply;
+  const WhoShould = data?.individualProducts?.whoShould;
 
   return (
     <>
@@ -64,26 +77,33 @@ export default function ProductPage() {
       </Head>
       <Header />
       <div className="float-left clear-both w-full">
-        <div ref={observe}>
-          {inView && <ProductBanner data={IndividualBanner} />}
-        </div>
+        <ProductBanner data={IndividualBanner} />
       </div>
-      <section className="float-left clear-both w-full">
+
+      <div className="w-full clear-both float-left">
         <div ref={observe}>
           {inView && (
             <Content content={ProductContent} desc={ProductDescription} />
           )}
         </div>
-      </section>
-      <section className="float-left clear-both w-full">
+      </div>
+      <div className="w-full clear-both float-left">
         <div ref={observe}>
           {inView && <Requirements data={RequirementsData} />}
         </div>
-      </section>
-      {/* <div ref={observe}>{inView && <GroupColumn />}</div>
-        <div className="w-full clear-both float-left">
-          <div ref={observe}>{inView && <FAQ />}</div>
-        </div> */}
+      </div>
+      <div className="w-full clear-both float-left">
+        <div ref={observe}>{inView && <How data={HowToApply} />}</div>
+      </div>
+      <div className="w-full clear-both float-left">
+        <div ref={observe}>{inView && <Who data={WhoShould} />}</div>
+      </div>
+      <div className="w-full clear-both float-left">
+        <div ref={observe}>{inView && <GroupColumn />}</div>
+      </div>
+      <div className="w-full clear-both float-left">
+        <div ref={observe}>{inView && <FAQ />}</div>
+      </div>
     </>
   );
 }
