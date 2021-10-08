@@ -1,4 +1,5 @@
 import "tailwindcss/tailwind.css";
+import "../styles/globals.css";
 import Head from "next/head";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";

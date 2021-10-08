@@ -66,12 +66,8 @@ export default function SinglePage() {
       return (
         <>
           <Header />
-          <div ref={observe}>
-            <ProductBanner data={ProductsData} />
-            <div ref={observe}>
-              {inView && <Products data={ProductsData} />}
-            </div>
-          </div>
+          <ProductBanner data={ProductsData} />
+          <div ref={observe}>{inView && <Products data={ProductsData} />}</div>
           <div ref={observe}>{inView && <Footer />}</div>
         </>
       );

@@ -5,16 +5,19 @@ import { useRouter } from "next/router";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
 
 export default function ProductsContainer({ data }) {
-  console.log(data);
+  const router = useRouter();
+
+  const cardPage = (href) => {
+    // console.log(href)
+    router.push(href);
+  };
+
   return (
     <>
       <div className="float-left clear-both">
         <div className="container mx-auto">
           <div>{ReactHtmlParser(data?.ourGoal)}</div>
-          <section
-            className="container grid gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3"
-            style={{ marginTop: 100, marginBottom: 30 }}
-          >
+          <section className="container grid gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
             {data?.productsCards?.map((value, key) => (
               <div
                 className="relative shadow-md rounded-md overflow-hidden dark:bg-red-100"

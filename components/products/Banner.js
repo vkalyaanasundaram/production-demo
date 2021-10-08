@@ -10,7 +10,6 @@ import {
 } from "react-device-detect";
 
 export default function ProductsBanner({ data }) {
-  console.log(data);
   const BannerImg = data?.pageBanner?.sourceUrl;
   const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
 
@@ -38,7 +37,6 @@ export default function ProductsBanner({ data }) {
       <section className="relative">
         {MobileBannerImage?.length > 0 && (
           <MobileView>
-            {" "}
             <Image
               alt="Mountains"
               src={MobileBannerImage}
