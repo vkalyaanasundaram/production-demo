@@ -1,5 +1,4 @@
 const path = require("path");
-
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -11,14 +10,5 @@ module.exports = {
     WORDPRESS_URL: "https://kap-staging.us/",
     MAPBOX_TOKEN:
       "pk.eyJ1Ijoia2FwaXR1cyIsImEiOiJjanR5and6MjYwMXltNDN0MWxnNTFoMGxpIn0.rbpYqdyv1o5OzsDLva85Sg",
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        include: path.resolve(__dirname, "src"),
-        loader: "babel-loader",
-      },
-    ],
   },
 };
