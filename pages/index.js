@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-// import loadable from "@loadable/component";
 import dynamic from "next/dynamic";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
 import { bgWrap, bgText } from "../styles/Home.module.css";
@@ -45,10 +44,6 @@ const Footer = dynamic(() => import("../components/Footer"), {
   },
   ssr: false,
 });
-
-export const config = {
-  unstable_runtimeJS: false,
-};
 
 export default function Home() {
   let { asPath, pathname } = useRouter();
