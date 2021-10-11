@@ -1,6 +1,8 @@
-const path = require("path");
-module.exports = {
-  reactStrictMode: true,
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+const nextConfig = {
   images: {
     domains: ["kap-staging.us"],
   },
@@ -12,3 +14,5 @@ module.exports = {
       "pk.eyJ1Ijoia2FwaXR1cyIsImEiOiJjanR5and6MjYwMXltNDN0MWxnNTFoMGxpIn0.rbpYqdyv1o5OzsDLva85Sg",
   },
 };
+
+module.exports = withBundleAnalyzer(nextConfig);
