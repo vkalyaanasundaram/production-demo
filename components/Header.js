@@ -55,7 +55,7 @@ const Header = () => {
                 className="text-white block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
                 key={index}
               >
-                <Link href={node.url} passHref>
+                <Link href={node.url} passHref prefetch={false}>
                   {node.label}
                 </Link>
               </span>

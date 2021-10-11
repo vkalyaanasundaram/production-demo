@@ -92,6 +92,7 @@ const MobileNav = () => {
                 href={node.url}
                 className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
                 onClick={onToggleNav}
+                prefetch={false}
               >
                 {node.label}
               </Link>
