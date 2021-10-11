@@ -122,7 +122,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <section>
+      <section>
         <div className={bgWrap}>
           {MobileBannerImage.length > 0 && (
             <MobileView>
@@ -176,10 +176,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="xs: hidden sm:hidden md:block ">{ReactHtmlParser(frmData)}</div>
+            <div className="xs: hidden sm:hidden md:block ">
+              {/* {ReactHtmlParser(frmData)} */}
+            </div>
           </div>
         </div>
-      </section> */}
+      </section>
       <section>Welcome to Kapitus</section>
     </>
   );
