@@ -121,7 +121,12 @@ export default function InfiniteScrollList() {
           >
             <div className="xs:grid grid-col-1 w-full mt-10 md:grid grid-cols-3 gap-4 mt-10">
               {posts?.map((key, index) => (
-                <Link href={`/blog/${key.slug}`} passHref key={index}>
+                <Link
+                  href={`/blog/${key.slug}`}
+                  passHref
+                  key={index}
+                  prefetch={false}
+                >
                   <div className="text-center">
                     {key?.featuredImage?.node?.sourceUrl.length > 0 && (
                       <Image

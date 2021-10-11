@@ -118,11 +118,10 @@ export default function Home() {
   return (
     <>
       <Header />
-      <section className="relative">
+      <section>
         <div className={bgWrap}>
           {MobileBannerImage.length > 0 && (
             <MobileView>
-              {" "}
               <Image
                 alt="Mountains"
                 src={MobileBannerImage}
@@ -139,7 +138,6 @@ export default function Home() {
 
           {BannerImg.length > 0 && (
             <BrowserView>
-              {" "}
               <Image
                 alt="Mountains"
                 src={BannerImg}
@@ -190,11 +188,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="float-left clear-both text-gray-600 body-font text-center">
-        <div className="container px-5 mx-auto flex flex-wrap items-center">
-          <div className="xs:w-full" ref={observe}>
-            {inView && <FinanceSolution />}
-          </div>
+      <section>
+        <div className="xs:w-full" ref={observe}>
+          {inView && <FinanceSolution />}
         </div>
       </section>
       <div className="xs:w-full" ref={observe}>
