@@ -153,18 +153,20 @@ export default function ProductPage() {
         </div>
         <div className="container">
           <h3>READY TO APPLY? </h3>
-          If invoice factoring seems like the right fit for you, let’s get you
-          ready to apply. To begin the application, you will need to be able to
-          provide an accounts receivable/payable aging report, articles of
-          incorporation or partnership agreement, personal or corporate tax
-          return and personal or corporate financial statement. Also, be sure to
-          check the credit of your commercial clients. Invoice factoring does
-          not pull your credit, but your commercial clients’ credit must be in
-          good standing. Additional documentation will likely be required as you
-          move through the underwriting process. If you’re still not sure that
-          invoice factoring is right for you, you can use our financing matching
-          tool or give us a call at (800) 780-7133 to speak with one of our
-          financing specialists.
+          <p>
+            If invoice factoring seems like the right fit for you, let’s get you
+            ready to apply. To begin the application, you will need to be able
+            to provide an accounts receivable/payable aging report, articles of
+            incorporation or partnership agreement, personal or corporate tax
+            return and personal or corporate financial statement. Also, be sure
+            to check the credit of your commercial clients. Invoice factoring
+            does not pull your credit, but your commercial clients’ credit must
+            be in good standing. Additional documentation will likely be
+            required as you move through the underwriting process. If you’re
+            still not sure that invoice factoring is right for you, you can use
+            our financing matching tool or give us a call at (800) 780-7133 to
+            speak with one of our financing specialists.
+          </p>
         </div>
       </>
     );
