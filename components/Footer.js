@@ -58,7 +58,7 @@ const Footer = () => {
                         {footerMenu.map((value, index) => (
                           <div className="text-gray-50" key={index}>
                             <li className="text-black text-base leading-8">
-                              <Link href={value.url} passHref>
+                              <Link href={value.url} passHref prefetch={false}>
                                 {value.label}
                               </Link>
                             </li>
@@ -77,6 +77,7 @@ const Footer = () => {
                               <Link
                                 href={"/products-services/" + value.slug}
                                 passHref
+                                prefetch={false}
                               >
                                 {value.title}
                               </Link>
