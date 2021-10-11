@@ -121,7 +121,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       {/* <section>
         <div className={bgWrap}>
           {MobileBannerImage.length > 0 && (
