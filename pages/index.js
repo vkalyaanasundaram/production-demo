@@ -46,6 +46,10 @@ const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
 });
 
+export const config = {
+  unstable_runtimeJS: false,
+};
+
 export default function Home() {
   let { asPath, pathname } = useRouter();
   const router = useRouter();
@@ -117,7 +121,7 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {/* <section>
         <div className={bgWrap}>
           {MobileBannerImage.length > 0 && (
