@@ -190,7 +190,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="text-gray-600 body-font text-center">
+      <section className="float-left clear-both text-gray-600 body-font text-center">
         <div className="container px-5 mx-auto flex flex-wrap items-center">
           <div className="xs:w-full" ref={observe}>
             {inView && <FinanceSolution />}

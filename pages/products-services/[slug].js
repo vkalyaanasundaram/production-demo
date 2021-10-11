@@ -49,6 +49,13 @@ const How = dynamic(() => import("../../components/products/HowToApply"), {
   },
   ssr: false,
 });
+const Footer = dynamic(() => import("../../components/Footer"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
+
 export default function ProductPage() {
   const { router, asPath } = useRouter();
   // const { component } = router.query
@@ -80,29 +87,29 @@ export default function ProductPage() {
         <ProductBanner data={IndividualBanner} />
       </div>
 
-      <div className="w-full clear-both float-left">
-        <div ref={observe}>
-          {inView && (
-            <Content content={ProductContent} desc={ProductDescription} />
-          )}
-        </div>
+      <div className="w-full clear-both float-left" ref={observe}>
+        {inView && (
+          <Content content={ProductContent} desc={ProductDescription} />
+        )}
       </div>
-      <div className="w-full clear-both float-left">
-        <div ref={observe}>
-          {inView && <Requirements data={RequirementsData} />}
-        </div>
+      <div className="w-full clear-both float-left" ref={observe}>
+        {inView && <Requirements data={RequirementsData} />}
       </div>
-      <div className="w-full clear-both float-left">
-        <div ref={observe}>{inView && <How data={HowToApply} />}</div>
+      <div className="w-full clear-both float-left" ref={observe}>
+        {inView && <How data={HowToApply} />}
       </div>
-      <div className="w-full clear-both float-left">
-        <div ref={observe}>{inView && <Who data={WhoShould} />}</div>
+      <div className="w-full clear-both float-left" ref={observe}>
+        {inView && <Who data={WhoShould} />}
       </div>
-      <div className="w-full clear-both float-left">
-        <div ref={observe}>{inView && <GroupColumn />}</div>
+      <div className="w-full clear-both float-left" ref={observe}>
+        {inView && <GroupColumn />}
       </div>
-      <div className="w-full clear-both float-left">
-        <div ref={observe}>{inView && <FAQ />}</div>
+      <div className="w-full clear-both float-left" ref={observe}>
+        {inView && <FAQ />}
+      </div>
+      {/* <div ref={observe}>{inView && <Footer />}</div> */}
+      <div className="float-left clear-both w-full" ref={observe}>
+        {inView && <Footer />}
       </div>
     </>
   );
