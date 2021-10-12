@@ -178,10 +178,10 @@ export default function Home() {
         </div>
       </section> */}
       <section>Welcome to Kapitus</section>
-      <section ref={observe}>
+      <section>
         <div className="xs:w-full container px-5 mx-auto">
           <div className={contentNav}>
-            <div className="container">
+            <div className="container" ref={observe}>
               {inView && (
                 <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
               )}
