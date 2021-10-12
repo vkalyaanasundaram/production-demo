@@ -13,10 +13,10 @@ const Header = () => {
   const { data, error } = useSWR("/api/page/header", fetcher);
 
   if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  // if (!data) return <div>loading...</div>;
   // console.log(data);
 
-  const primaryMenus = data?.menuItems?.edges;
+  // const primaryMenus = data?.menuItems?.edges;
   // console.log(primaryMenus);
 
   return (
@@ -50,7 +50,7 @@ const Header = () => {
           } overflow-hidden w-full lg:h-full block flex-grow lg:flex lg:items-center lg:w-auto`}
         >
           <div className="text-sm lg:flex-grow">
-            {primaryMenus.map(({ node }, index) => (
+            {data?.menuItems?.edges.map(({ node }, index) => (
               <span
                 className="text-white block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
                 key={index}
