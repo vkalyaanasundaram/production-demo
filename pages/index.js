@@ -15,8 +15,7 @@ import {
 } from "react-device-detect";
 import { contentNav } from "../styles/Home.module.css";
 
-const fetcher = (query) =>
-  request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Header = dynamic(() => import("../components/Header"), {
   loading: function ld() {
@@ -46,6 +45,8 @@ const Footer = dynamic(() => import("../components/Footer"), {
 });
 
 export default function Home() {
+  const { data, error } = useSWR("/api/page/home", fetcher);
+
   let { asPath, pathname } = useRouter();
   const router = useRouter();
 
@@ -73,51 +74,15 @@ export default function Home() {
     onLeave: ({ observe }) => observe(),
   });
 
-  const { data, error } = useSWR(
-    `query HomePage {
-        page(idType: ID, id: "cG9zdDoyNDYzMA==") {
-          title
-          uri
-          ThreeColumnStaticPage {
-            cards {
-              cardContent
-              cardTitle
-              svgIcon {
-                sourceUrl
-              }
-            }
-            banner {
-              bannerButton
-              bannerDescription
-              bannerTitle
-              bannerImage{
-                sourceUrl
-              }
-              mobileBannerImage {
-                sourceUrl
-              }
-            }
-          }
-          id
-        }
-      }
-  `,
-    fetcher
-  );
-  if (error) return <div> error.... </div>;
-  if (!data) return <div> Loading.... </div>;
-
-  // console.log(data);
-
-  const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
-  const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
-  const BannerImg = bannerContent?.bannerImage?.sourceUrl;
-  const MobileBannerImage = bannerContent?.mobileBannerImage?.sourceUrl;
+  // const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
+  // const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
+  // const BannerImg = bannerContent?.bannerImage?.sourceUrl;
+  // const MobileBannerImage = bannerContent?.mobileBannerImage?.sourceUrl;
 
   return (
     <>
       {/* <Header /> */}
-      <section>
+      {/* <section>
         <div className={bgWrap}>
           {MobileBannerImage.length > 0 && (
             <MobileView>
@@ -172,13 +137,13 @@ export default function Home() {
             </div>
 
             <div className="xs: hidden sm:hidden md:block ">
-              {/* {ReactHtmlParser(frmData)} */}
+              {ReactHtmlParser(frmData)}
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section>Welcome to Kapitus</section>
-      {/* <section>
+      <section>
         <div className="xs:w-full container px-5 mt-10 mb-10 mx-auto">
           <div>
             <div className="container" ref={observe}>
@@ -188,7 +153,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* <section className="xs:w-full container px-5 mx-auto">
         <div ref={observe}>{inView && <FinanceSolution />}</div>
