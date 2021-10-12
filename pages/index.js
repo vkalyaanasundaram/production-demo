@@ -74,21 +74,21 @@ export default function Home() {
     onLeave: ({ observe }) => observe(),
   });
 
-  // const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
+  const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
   // const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
-  // const BannerImg = bannerContent?.bannerImage?.sourceUrl;
-  // const MobileBannerImage = bannerContent?.mobileBannerImage?.sourceUrl;
+  const BannerImg = bannerContent?.bannerImage?.sourceUrl;
+  const MobileBannerImage = bannerContent?.mobileBannerImage?.sourceUrl;
 
   return (
     <>
       <Header />
-      {/* <section>
+      <section>
         <div className={bgWrap}>
-          {MobileBannerImage.length > 0 && (
+          {bannerContent?.mobileBannerImage?.sourceUrl.length > 0 && (
             <MobileView>
               <Image
                 alt="Mountains"
-                src={MobileBannerImage}
+                src={bannerContent?.mobileBannerImage?.sourceUrl}
                 layout="fill"
                 objectFit="cover"
                 quality={100}
@@ -100,11 +100,11 @@ export default function Home() {
             </MobileView>
           )}
 
-          {BannerImg.length > 0 && (
+          {bannerContent?.bannerImage?.sourceUrl?.length > 0 && (
             <BrowserView>
               <Image
                 alt="Mountains"
-                src={BannerImg}
+                src={bannerContent?.bannerImage?.sourceUrl}
                 layout="fill"
                 objectFit="cover"
                 quality={100}
@@ -137,12 +137,12 @@ export default function Home() {
             </div>
 
             <div className="xs: hidden sm:hidden md:block ">
-              {ReactHtmlParser(frmData)}
+              {/* {ReactHtmlParser(frmData)} */}
             </div>
           </div>
         </div>
-      </section> */}
-      <section>Welcome to Kapitus</section>
+      </section>
+      {/* <section>Welcome to Kapitus</section> */}
       <section>
         <div className="xs:w-full container px-5 mt-10 mb-10 mx-auto">
           <div>
