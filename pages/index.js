@@ -179,8 +179,8 @@ export default function Home() {
       </section> */}
       <section>Welcome to Kapitus</section>
       <section>
-        <div className="xs:w-full container px-5 mx-auto">
-          <div className={contentNav}>
+        <div className="xs:w-full container px-5 mt-10 mb-10 mx-auto">
+          <div>
             <div className="container" ref={observe}>
               {inView && (
                 <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
@@ -190,11 +190,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        <div className="xs:w-full" ref={observe}>
-          {inView && <FinanceSolution />}
-        </div>
-      </section>
+      {/* <section className="xs:w-full container px-5 mx-auto">
+        <div ref={observe}>{inView && <FinanceSolution />}</div>
+      </section> */}
       <div className="xs:w-full" ref={observe}>
         {inView && <Footer />}
       </div>
