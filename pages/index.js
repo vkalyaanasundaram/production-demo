@@ -117,7 +117,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <section>
+      <section>
         <div className={bgWrap}>
           {MobileBannerImage.length > 0 && (
             <MobileView>
@@ -172,13 +172,13 @@ export default function Home() {
             </div>
 
             <div className="xs: hidden sm:hidden md:block ">
-              {ReactHtmlParser(frmData)}
+              {/* {ReactHtmlParser(frmData)} */}
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
       <section>Welcome to Kapitus</section>
-      <section>
+      {/* <section>
         <div className="xs:w-full container px-5 mt-10 mb-10 mx-auto">
           <div>
             <div className="container" ref={observe}>
@@ -188,7 +188,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <section className="xs:w-full container px-5 mx-auto">
         <div ref={observe}>{inView && <FinanceSolution />}</div>
