@@ -107,7 +107,7 @@ export default function Home() {
   if (error) return <div> error.... </div>;
   if (!data) return <div> Loading.... </div>;
 
-  console.log(data);
+  // console.log(data);
 
   const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
   const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
@@ -178,8 +178,8 @@ export default function Home() {
         </div>
       </section> */}
       <section>Welcome to Kapitus</section>
-      <section>
-        <div className="xs:w-full container px-5 mx-auto" ref={observe}>
+      <section ref={observe}>
+        <div className="xs:w-full container px-5 mx-auto">
           <div className={contentNav}>
             <div className="container">
               {inView && (
