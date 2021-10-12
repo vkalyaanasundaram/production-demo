@@ -82,7 +82,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <section>
+      <section>
         <div className={bgWrap}>
           {MobileBannerImage.length > 0 && (
             <MobileView>
@@ -141,8 +141,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section> */}
-      <section>Welcome to Kapitus</section>
+      </section>
+      {/* <section>Welcome to Kapitus</section> */}
       <section>
         <div className="xs:w-full container px-5 mt-10 mb-10 mx-auto">
           <div>
