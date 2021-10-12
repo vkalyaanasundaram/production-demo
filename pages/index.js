@@ -190,14 +190,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <div className="xs:w-full" ref={observe}>
           {inView && <FinanceSolution />}
         </div>
       </section>
       <div className="xs:w-full" ref={observe}>
         {inView && <Footer />}
-      </div>
+      </div> */}
     </>
   );
 }
