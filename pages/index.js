@@ -75,9 +75,6 @@ export default function Home() {
   });
 
   const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
-  // const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
-  const BannerImg = bannerContent?.bannerImage?.sourceUrl;
-  const MobileBannerImage = bannerContent?.mobileBannerImage?.sourceUrl;
 
   return (
     <>
@@ -145,12 +142,12 @@ export default function Home() {
         {inView && <Content data={data?.page?.ThreeColumnStaticPage?.cards} />}
       </section>
 
-      {/* <section className="xs:w-full container px-5 mx-auto">
+      <section className="xs:w-full container px-5 mx-auto">
         <div ref={observe}>{inView && <FinanceSolution />}</div>
-      </section> */}
-      <div className="xs:w-full" ref={observe}>
+      </section>
+      {/* <div className="xs:w-full" ref={observe}>
         {inView && <Footer />}
-      </div>
+      </div> */}
     </>
   );
 }
