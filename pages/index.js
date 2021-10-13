@@ -83,7 +83,7 @@ export default function Home() {
     <>
       <Header />
       <section>
-        <div className={bgWrap}>
+        {/* <div className={bgWrap}>
           {bannerContent?.mobileBannerImage?.sourceUrl.length > 0 && (
             <MobileView>
               <Image
@@ -115,7 +115,7 @@ export default function Home() {
               />
             </BrowserView>
           )}
-        </div>
+        </div>*/}
         <div className={bgText}>
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">
             <div className="text-blue-900 mb-10">
@@ -136,9 +136,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="xs: hidden sm:hidden md:block ">
-              {/* {ReactHtmlParser(frmData)} */}
-            </div>
+            <div className="xs: hidden sm:hidden md:block "></div>
           </div>
         </div>
       </section>
@@ -155,9 +153,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section className="xs:w-full container px-5 mx-auto">
+      <section className="xs:w-full container px-5 mx-auto">
         <div ref={observe}>{inView && <FinanceSolution />}</div>
-      </section> */}
+      </section>
       <div className="xs:w-full" ref={observe}>
         {inView && <Footer />}
       </div>
