@@ -8,36 +8,14 @@ import {
   contentNav,
 } from "../styles/Home.module.css";
 
-const fetcher = (query) =>
-  request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Footer = () => {
-  const router = useRouter();
-
-  const { data, error } = useSWR(
-    `query ProductServiceQry {
-        productsServices(where: {status: PUBLISH, orderby: {field: TITLE, order: ASC}}) {
-          nodes {
-            slug
-            title
-          }
-        }
-        menuItems(where: {location: HCMS_MENU_FOOTER}) {
-          nodes {
-            url
-            label
-          }
-        }
-      }`,
-    fetcher
-  );
-
-  if (error) return <div> error.... </div>;
-  if (!data) return <div> Loading.... </div>;
-
+  const { data, error } = useSWR("/api/page/footer", fetcher);
   const footerMenu = data?.menuItems?.nodes;
   const productMenus = data?.productsServices?.nodes;
-
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
   return (
     <>
       <div className={contentNav}>
@@ -136,7 +114,7 @@ const Footer = () => {
                 </div>
 
                 <div className="bg-gray-100">
-                  <div className="container">
+                  <div className="container text-sm">
                     Copyright@2021 Kapitus, LLC or its affiliates.&nbsp;All
                     rights reserved.&nbsp;Kapitus, LLC, Kapitus.com, and the
                     Kapitus logo are registered trademarks of Kapitus, Inc. or
