@@ -14,16 +14,15 @@ import {
   isMobile,
 } from "react-device-detect";
 import { contentNav } from "../styles/Home.module.css";
-import Header from "../components/Header";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-// const Header = dynamic(() => import("../components/Header"), {
-//   loading: function ld() {
-//     return <p>Loading...</p>;
-//   },
-//   ssr: false,
-// });
+const Header = dynamic(() => import("../components/Header"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
 const Content = dynamic(() => import("../components/Content"), {
   loading: function ld() {
     return <p>Loading...</p>;
