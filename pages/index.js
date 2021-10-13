@@ -1,5 +1,4 @@
 import Head from "next/head";
-import React, { useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
@@ -7,7 +6,7 @@ import { bgWrap, bgText } from "../styles/Home.module.css";
 import useSWR from "swr";
 import { request } from "graphql-request";
 import { useRouter } from "next/router";
-import { InView } from "react-intersection-observer";
+import useInView from "react-cool-inview";
 import {
   BrowserView,
   MobileView,
@@ -24,31 +23,9 @@ const Header = dynamic(() => import("../components/Header"), {
   },
   ssr: false,
 });
-const Content = dynamic(() => import("../components/Content"), {
-  loading: function ld() {
-    return <p>Loading...</p>;
-  },
-  ssr: false,
-});
-
-const FinanceSolution = dynamic(() => import("../components/FinanceSolution"), {
-  loading: function ld() {
-    return <p>Loading...</p>;
-  },
-  ssr: false,
-});
-
-const Footer = dynamic(() => import("../components/Footer"), {
-  loading: function ld() {
-    return <p>Loading...</p>;
-  },
-  ssr: false,
-});
 
 export default function Home() {
   const { data, error } = useSWR("/api/page/home", fetcher);
-
-  const [inView, setInView] = useState(false);
 
   let { asPath, pathname } = useRouter();
   const router = useRouter();
@@ -72,10 +49,34 @@ export default function Home() {
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
 
-  // const { observe, inView } = useInView({
-  //   onEnter: ({ unobserve }) => unobserve(), // only run once
-  //   onLeave: ({ observe }) => observe(),
-  // });
+  const { observe, inView } = useInView({
+    onEnter: ({ unobserve }) => unobserve(), // only run once
+    onLeave: ({ observe }) => observe(),
+  });
+
+  const Content = dynamic(() => import("../components/Content"), {
+    loading: function ld() {
+      return <p>Loading...</p>;
+    },
+    ssr: false,
+  });
+
+  const FinanceSolution = dynamic(
+    () => import("../components/FinanceSolution"),
+    {
+      loading: function ld() {
+        return <p>Loading...</p>;
+      },
+      ssr: false,
+    }
+  );
+
+  const Footer = dynamic(() => import("../components/Footer"), {
+    loading: function ld() {
+      return <p>Loading...</p>;
+    },
+    ssr: false,
+  });
 
   const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
   // const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
@@ -144,35 +145,19 @@ export default function Home() {
         </div>
       </section>
       {/* <section>Welcome to Kapitus</section> */}
-      <div inView={inView}>
-        <InView onChange={setInView}>
-          {({ inView, ref, entry }) => (
-            <div ref={ref}>
-              <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
-            </div>
-          )}
-        </InView>
+      <div ref={observe}>
+        {inView ? (
+          <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
+        ) : (
+          ""
+        )}
+      </div>
 
-        <section className="xs:w-full container px-5 mx-auto">
-          <InView onChange={setInView}>
-            {({ inView, ref, entry }) => (
-              <div ref={ref}>
-                {`${inView}`}
-                <FinanceSolution />
-              </div>
-            )}
-          </InView>
-        </section>
-        <div className="xs:w-full">
-          <InView onChange={setInView}>
-            {({ inView, ref, entry }) => (
-              <div ref={ref}>
-                {`${inView}`}
-                <Footer />
-              </div>
-            )}
-          </InView>
-        </div>
+      <section className="xs:w-full container px-5 mx-auto">
+        <div ref={observe}>{inView ? <FinanceSolution /> : ""}</div>
+      </section>
+      <div className="xs:w-full" ref={observe}>
+        {inView && <Footer />}
       </div>
     </>
   );
