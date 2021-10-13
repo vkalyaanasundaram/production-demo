@@ -82,13 +82,13 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <section>
+      <section>
         <div className={bgWrap}>
           {bannerContent?.mobileBannerImage?.sourceUrl.length > 0 && (
             <MobileView>
               <Image
                 alt="Mountains"
-                src={bannerContent?.mobileBannerImage?.sourceUrl}
+                src="/Tablet-image2.png"
                 layout="fill"
                 objectFit="cover"
                 quality={100}
@@ -104,7 +104,7 @@ export default function Home() {
             <BrowserView>
               <Image
                 alt="Mountains"
-                src={bannerContent?.bannerImage?.sourceUrl}
+                src="/Desktop-Image3_1366x384-1.jpg"
                 layout="fill"
                 objectFit="cover"
                 quality={100}
@@ -137,11 +137,11 @@ export default function Home() {
             </div>
 
             <div className="xs: hidden sm:hidden md:block ">
-              {ReactHtmlParser(frmData)}
+              {/* {ReactHtmlParser(frmData)} */}
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
       {/* <section>Welcome to Kapitus</section> */}
       <section>
         <div className="xs:w-full container px-5 mt-10 mb-10 mx-auto">
