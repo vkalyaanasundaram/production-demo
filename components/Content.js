@@ -23,7 +23,7 @@ const shimmer = (w, h) => `
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
 
-export function Content({ data }) {
+const Content = ({ data }) => {
   // console.log(data);
 
   return (
@@ -65,4 +65,6 @@ export function Content({ data }) {
       </div>
     </section>
   );
-}
+};
+
+export default Content;
