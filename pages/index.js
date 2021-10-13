@@ -14,10 +14,31 @@ import {
   isMobile,
 } from "react-device-detect";
 import { contentNav } from "../styles/Home.module.css";
+import Header from "../components/Header";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-const Header = dynamic(() => import("../components/Header"), {
+// const Header = dynamic(() => import("../components/Header"), {
+//   loading: function ld() {
+//     return <p>Loading...</p>;
+//   },
+//   ssr: false,
+// });
+const Content = dynamic(() => import("../components/Content"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
+
+const FinanceSolution = dynamic(() => import("../components/FinanceSolution"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
+
+const Footer = dynamic(() => import("../components/Footer"), {
   loading: function ld() {
     return <p>Loading...</p>;
   },
@@ -52,30 +73,6 @@ export default function Home() {
   const { observe, inView } = useInView({
     onEnter: ({ unobserve }) => unobserve(), // only run once
     onLeave: ({ observe }) => observe(),
-  });
-
-  const Content = dynamic(() => import("../components/Content"), {
-    loading: function ld() {
-      return <p>Loading...</p>;
-    },
-    ssr: false,
-  });
-
-  const FinanceSolution = dynamic(
-    () => import("../components/FinanceSolution"),
-    {
-      loading: function ld() {
-        return <p>Loading...</p>;
-      },
-      ssr: false,
-    }
-  );
-
-  const Footer = dynamic(() => import("../components/Footer"), {
-    loading: function ld() {
-      return <p>Loading...</p>;
-    },
-    ssr: false,
   });
 
   const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
@@ -146,15 +143,11 @@ export default function Home() {
       </section>
       {/* <section>Welcome to Kapitus</section> */}
       <div ref={observe}>
-        {inView ? (
-          <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
-        ) : (
-          ""
-        )}
+        {inView && <Content data={data?.page?.ThreeColumnStaticPage?.cards} />}
       </div>
 
-      <section className="xs:w-full container px-5 mx-auto">
-        <div ref={observe}>{inView ? <FinanceSolution /> : ""}</div>
+      <section className="xs:w-full container px-5 mx-auto" ref={observe}>
+        {inView && <FinanceSolution />}
       </section>
       <div className="xs:w-full" ref={observe}>
         {inView && <Footer />}
