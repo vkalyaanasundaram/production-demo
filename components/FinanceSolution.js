@@ -1,4 +1,4 @@
-const FinanceSolution = () => {
+export function FinanceSolution() {
   return (
     <div className="xs:w-full px-5 md:w-full px-10 justify-content-md-center mt-5 mb-5">
       <div className="my-3">
@@ -17,5 +17,4 @@ const FinanceSolution = () => {
       <button className="btn-apply">APPLY NOW</button>
     </div>
   );
-};
-export default FinanceSolution;
+}

@@ -24,26 +24,36 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 //   },
 //   ssr: false,
 // });
-const Content = dynamic(() => import("../components/Content"), {
-  loading: function ld() {
-    return <p>Loading...</p>;
-  },
-  ssr: false,
-});
+const Content = dynamic(
+  () => import("../components/Content").then((mod) => mod.Content),
+  {
+    loading: function ld() {
+      return <p>Loading...</p>;
+    },
+    ssr: false,
+  }
+);
 
-const FinanceSolution = dynamic(() => import("../components/FinanceSolution"), {
-  loading: function ld() {
-    return <p>Loading...</p>;
-  },
-  ssr: false,
-});
+const FinanceSolution = dynamic(
+  () =>
+    import("../components/FinanceSolution").then((mod) => mod.FinanceSolution),
+  {
+    loading: function ld() {
+      return <p>Loading...</p>;
+    },
+    ssr: false,
+  }
+);
 
-const Footer = dynamic(() => import("../components/Footer"), {
-  loading: function ld() {
-    return <p>Loading...</p>;
-  },
-  ssr: false,
-});
+const Footer = dynamic(
+  () => import("../components/Footer").then((mod) => mod.Footer),
+  {
+    loading: function ld() {
+      return <p>Loading...</p>;
+    },
+    ssr: false,
+  }
+);
 
 export default function Home() {
   const { data, error } = useSWR("/api/page/home", fetcher);
@@ -69,11 +79,6 @@ export default function Home() {
     <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
-
-  const { observe, inView } = useInView({
-    onEnter: ({ unobserve }) => unobserve(), // only run once
-    onLeave: ({ observe }) => observe(),
-  });
 
   const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
   // const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
@@ -142,15 +147,15 @@ export default function Home() {
         </div>
       </section>
       {/* <section>Welcome to Kapitus</section> */}
-      <div ref={observe}>
-        {inView && <Content data={data?.page?.ThreeColumnStaticPage?.cards} />}
+      <div>
+        <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
       </div>
 
-      <section className="xs:w-full container px-5 mx-auto" ref={observe}>
-        {inView && <FinanceSolution />}
+      <section className="xs:w-full container px-5 mx-auto">
+        <FinanceSolution />
       </section>
-      <div className="xs:w-full" ref={observe}>
-        {inView && <Footer />}
+      <div className="xs:w-full">
+        <Footer />
       </div>
     </>
   );
