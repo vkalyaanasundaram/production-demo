@@ -11,7 +11,7 @@ import {
 const fetcher = (query) =>
   request(process.env.WORDPRESS_GRAPHQL_ENDPOINT, query);
 
-const Footer = () => {
+export function Footer() {
   const router = useRouter();
 
   const { data, error } = useSWR(
@@ -161,6 +161,4 @@ const Footer = () => {
       </div>
     </>
   );
-};
-
-export default Footer;
+}
