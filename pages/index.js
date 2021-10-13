@@ -1,4 +1,5 @@
 import Head from "next/head";
+import React, { useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
@@ -6,7 +7,7 @@ import { bgWrap, bgText } from "../styles/Home.module.css";
 import useSWR from "swr";
 import { request } from "graphql-request";
 import { useRouter } from "next/router";
-import useInView from "react-cool-inview";
+import { InView } from "react-intersection-observer";
 import {
   BrowserView,
   MobileView,
@@ -47,6 +48,8 @@ const Footer = dynamic(() => import("../components/Footer"), {
 export default function Home() {
   const { data, error } = useSWR("/api/page/home", fetcher);
 
+  const [inView, setInView] = useState(false);
+
   let { asPath, pathname } = useRouter();
   const router = useRouter();
 
@@ -69,10 +72,10 @@ export default function Home() {
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
 
-  const { observe, inView } = useInView({
-    onEnter: ({ unobserve }) => unobserve(), // only run once
-    onLeave: ({ observe }) => observe(),
-  });
+  // const { observe, inView } = useInView({
+  //   onEnter: ({ unobserve }) => unobserve(), // only run once
+  //   onLeave: ({ observe }) => observe(),
+  // });
 
   const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
   // const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
@@ -141,23 +144,35 @@ export default function Home() {
         </div>
       </section>
       {/* <section>Welcome to Kapitus</section> */}
-      <section>
-        <div className="xs:w-full container px-5 mt-10 mb-10 mx-auto">
-          <div>
-            <div className="container" ref={observe}>
-              {inView && (
-                <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
-              )}
+      <div inView={inView}>
+        <InView onChange={setInView}>
+          {({ inView, ref, entry }) => (
+            <div ref={ref}>
+              <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
             </div>
-          </div>
-        </div>
-      </section>
+          )}
+        </InView>
 
-      <section className="xs:w-full container px-5 mx-auto">
-        <div ref={observe}>{inView && <FinanceSolution />}</div>
-      </section>
-      <div className="xs:w-full" ref={observe}>
-        {inView && <Footer />}
+        <section className="xs:w-full container px-5 mx-auto">
+          <InView onChange={setInView}>
+            {({ inView, ref, entry }) => (
+              <div ref={ref}>
+                {`${inView}`}
+                <FinanceSolution />
+              </div>
+            )}
+          </InView>
+        </section>
+        <div className="xs:w-full">
+          <InView onChange={setInView}>
+            {({ inView, ref, entry }) => (
+              <div ref={ref}>
+                {`${inView}`}
+                <Footer />
+              </div>
+            )}
+          </InView>
+        </div>
       </div>
     </>
   );
