@@ -34,7 +34,6 @@ const Footer = () => {
 
   if (error) return <div> error.... </div>;
   if (!data) return <div> Loading.... </div>;
-  console.log(data);
 
   const footerMenu = data?.menuItems?.nodes;
   const productMenus = data?.productsServices?.nodes;
