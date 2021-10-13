@@ -79,7 +79,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <section>
+      <section>
         <div className={bgWrap}>
           {bannerContent?.mobileBannerImage?.sourceUrl.length > 0 && (
             <MobileView>
@@ -133,11 +133,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="xs: hidden sm:hidden md:block ">
-            </div>
+            <div className="xs: hidden sm:hidden md:block "></div>
           </div>
         </div>
-      </section> */}
+      </section>
       <section ref={observe}>
         {inView && <Content data={data?.page?.ThreeColumnStaticPage?.cards} />}
       </section>
