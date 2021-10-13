@@ -89,7 +89,7 @@ export default function Home() {
     <>
       <Header />
       <section>
-        {/* <div className={bgWrap}>
+        <div className={bgWrap}>
           {bannerContent?.mobileBannerImage?.sourceUrl.length > 0 && (
             <MobileView>
               <Image
@@ -121,7 +121,7 @@ export default function Home() {
               />
             </BrowserView>
           )}
-        </div>*/}
+        </div>
         <div className={bgText}>
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">
             <div className="text-blue-900 mb-10">
