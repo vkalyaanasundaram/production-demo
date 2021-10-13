@@ -74,7 +74,7 @@ export default function Home() {
     onLeave: ({ observe }) => observe(),
   });
 
-  const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
+  // const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
 
   return (
     <>
@@ -117,10 +117,12 @@ export default function Home() {
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">
             <div className="text-blue-900 mb-10">
               <div className="sm:w-full text-5xl xs:w-full text-5xl md:text-5xl">
-                {bannerContent?.bannerTitle}
+                {data?.page?.ThreeColumnStaticPage?.banner?.bannerTitle}
               </div>
               <div className="sm:text-lg xs:text-sm mt-5 md:text-2xl text-blue-900">
-                {ReactHtmlParser(bannerContent?.bannerButton)}
+                {ReactHtmlParser(
+                  data?.page?.ThreeColumnStaticPage?.banner?.bannerButton
+                )}
               </div>
 
               <div className="xs:text-xl mt-5 text-xs text-blue-900 text-left copyrights">
