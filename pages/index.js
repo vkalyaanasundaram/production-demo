@@ -6,7 +6,7 @@ import { bgWrap, bgText } from "../styles/Home.module.css";
 import useSWR from "swr";
 import { request } from "graphql-request";
 import { useRouter } from "next/router";
-import { InView, useInView } from "react-intersection-observer";
+import useInView from "react-cool-inview";
 import {
   BrowserView,
   MobileView,
@@ -44,19 +44,11 @@ const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
 });
 
-export default function Home({ width, height, ...rest }) {
+export default function Home() {
   const { data, error } = useSWR("/api/page/home", fetcher);
+
   let { asPath, pathname } = useRouter();
   const router = useRouter();
-  // const { ref, inView, entry } = useInView(options);
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
-    trackVisibility: true,
-    delay: 100,
-    unobserveOnEnter: true,
-    // For better UX, we can grow the root margin so the image will be loaded before it comes to the viewport
-    rootMargin: "50px",
-  });
 
   const toBase64 = (str) =>
     typeof window === "undefined"
@@ -77,6 +69,11 @@ export default function Home({ width, height, ...rest }) {
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
 
+  const { observe, inView } = useInView({
+    onEnter: ({ unobserve }) => unobserve(), // only run once
+    onLeave: ({ observe }) => observe(),
+  });
+
   const bannerContent = data?.page?.ThreeColumnStaticPage?.banner;
   // const cardContent = data?.page?.ThreeColumnStaticPage?.cards;
   const BannerImg = bannerContent?.bannerImage?.sourceUrl;
@@ -85,13 +82,13 @@ export default function Home({ width, height, ...rest }) {
   return (
     <>
       <Header />
-      <section>
+      {/* <section>
         <div className={bgWrap}>
           {bannerContent?.mobileBannerImage?.sourceUrl.length > 0 && (
             <MobileView>
               <Image
                 alt="Mountains"
-                src="/Tablet-image2.png"
+                src={bannerContent?.mobileBannerImage?.sourceUrl}
                 layout="fill"
                 objectFit="cover"
                 quality={100}
@@ -107,7 +104,7 @@ export default function Home({ width, height, ...rest }) {
             <BrowserView>
               <Image
                 alt="Mountains"
-                src="/Desktop-Image3_1366x384-1.jpg"
+                src={bannerContent?.bannerImage?.sourceUrl}
                 layout="fill"
                 objectFit="cover"
                 quality={100}
@@ -139,33 +136,31 @@ export default function Home({ width, height, ...rest }) {
               </div>
             </div>
 
-            <div className="xs: hidden sm:hidden md:block "></div>
+            <div className="xs: hidden sm:hidden md:block ">
+              {ReactHtmlParser(frmData)}
+            </div>
+          </div>
+        </div>
+      </section> */}
+      {/* <section>Welcome to Kapitus</section> */}
+      <section>
+        <div className="xs:w-full container px-5 mt-10 mb-10 mx-auto">
+          <div>
+            <div className="container" ref={observe}>
+              {inView && (
+                <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
+              )}
+            </div>
           </div>
         </div>
       </section>
-      {/* <section>Welcome to Kapitus</section> */}
-      <InView>
-        {({ inView, ref, entry }) => (
-          <div ref={ref}>
-            <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
-          </div>
-        )}
-      </InView>
 
-      <InView>
-        {({ inView, ref, entry }) => (
-          <section className="xs:w-full container px-5 mx-auto" ref={ref}>
-            <FinanceSolution />
-          </section>
-        )}
-      </InView>
-      <InView>
-        {({ inView, ref, entry }) => (
-          <div className="xs:w-full" ref={ref}>
-            <Footer />
-          </div>
-        )}
-      </InView>
+      <section className="xs:w-full container px-5 mx-auto">
+        <div ref={observe}>{inView && <FinanceSolution />}</div>
+      </section>
+      <div className="xs:w-full" ref={observe}>
+        {inView && <Footer />}
+      </div>
     </>
   );
 }
