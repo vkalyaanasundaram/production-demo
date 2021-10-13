@@ -45,14 +45,18 @@ const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
 });
 
-export default function Home() {
+export default function Home({ width, height, ...rest }) {
   const { data, error } = useSWR("/api/page/home", fetcher);
   let { asPath, pathname } = useRouter();
   const router = useRouter();
   // const { ref, inView, entry } = useInView(options);
   const { ref, inView, entry } = useInView({
     /* Optional options */
-    threshold: 0,
+    trackVisibility: true,
+    delay: 100,
+    unobserveOnEnter: true,
+    // For better UX, we can grow the root margin so the image will be loaded before it comes to the viewport
+    rootMargin: "50px",
   });
 
   const toBase64 = (str) =>
@@ -88,7 +92,7 @@ export default function Home() {
             <MobileView>
               <Image
                 alt="Mountains"
-                src={bannerContent?.mobileBannerImage?.sourceUrl}
+                src="/Tablet-image2.png"
                 layout="fill"
                 objectFit="cover"
                 quality={100}
@@ -104,7 +108,7 @@ export default function Home() {
             <BrowserView>
               <Image
                 alt="Mountains"
-                src={bannerContent?.bannerImage?.sourceUrl}
+                src="/Desktop-Image3_1366x384-1.jpg"
                 layout="fill"
                 objectFit="cover"
                 quality={100}
