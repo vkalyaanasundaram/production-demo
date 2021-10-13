@@ -141,7 +141,7 @@ export default function Home() {
       <section ref={observe}>
         {inView && <Content data={data?.page?.ThreeColumnStaticPage?.cards} />}
       </section>
-      {/* <section ref={observe}>{inView && <Footer />}</section> */}
+      <section ref={observe}>{inView && <Footer />}</section>
     </>
   );
 }
