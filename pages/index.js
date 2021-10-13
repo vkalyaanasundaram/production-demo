@@ -6,7 +6,7 @@ import { bgWrap, bgText } from "../styles/Home.module.css";
 import useSWR from "swr";
 import { request } from "graphql-request";
 import { useRouter } from "next/router";
-import useInView from "react-cool-inview";
+import { InView, useInView } from "react-intersection-observer";
 import {
   BrowserView,
   MobileView,
@@ -47,9 +47,13 @@ const Footer = dynamic(() => import("../components/Footer"), {
 
 export default function Home() {
   const { data, error } = useSWR("/api/page/home", fetcher);
-
   let { asPath, pathname } = useRouter();
   const router = useRouter();
+  // const { ref, inView, entry } = useInView(options);
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
 
   const toBase64 = (str) =>
     typeof window === "undefined"
@@ -137,16 +141,28 @@ export default function Home() {
         </div>
       </section>
       {/* <section>Welcome to Kapitus</section> */}
-      <div>
-        <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
-      </div>
+      <InView>
+        {({ inView, ref, entry }) => (
+          <div ref={ref}>
+            <Content data={data?.page?.ThreeColumnStaticPage?.cards} />
+          </div>
+        )}
+      </InView>
 
-      <section className="xs:w-full container px-5 mx-auto">
-        <FinanceSolution />
-      </section>
-      <div className="xs:w-full">
-        <Footer />
-      </div>
+      <InView>
+        {({ inView, ref, entry }) => (
+          <section className="xs:w-full container px-5 mx-auto" ref={ref}>
+            <FinanceSolution />
+          </section>
+        )}
+      </InView>
+      <InView>
+        {({ inView, ref, entry }) => (
+          <div className="xs:w-full" ref={ref}>
+            <Footer />
+          </div>
+        )}
+      </InView>
     </>
   );
 }
