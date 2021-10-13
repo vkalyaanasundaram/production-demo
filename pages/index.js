@@ -24,36 +24,26 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 //   },
 //   ssr: false,
 // });
-const Content = dynamic(
-  () => import("../components/Content").then((mod) => mod.Content),
-  {
-    loading: function ld() {
-      return <p>Loading...</p>;
-    },
-    ssr: false,
-  }
-);
+const Content = dynamic(() => import("../components/Content"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
 
-const FinanceSolution = dynamic(
-  () =>
-    import("../components/FinanceSolution").then((mod) => mod.FinanceSolution),
-  {
-    loading: function ld() {
-      return <p>Loading...</p>;
-    },
-    ssr: false,
-  }
-);
+const FinanceSolution = dynamic(() => import("../components/FinanceSolution"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
 
-const Footer = dynamic(
-  () => import("../components/Footer").then((mod) => mod.Footer),
-  {
-    loading: function ld() {
-      return <p>Loading...</p>;
-    },
-    ssr: false,
-  }
-);
+const Footer = dynamic(() => import("../components/Footer"), {
+  loading: function ld() {
+    return <p>Loading...</p>;
+  },
+  ssr: false,
+});
 
 export default function Home() {
   const { data, error } = useSWR("/api/page/home", fetcher);
