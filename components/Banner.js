@@ -55,7 +55,7 @@ export default function Banner({ data }) {
             />
           </BrowserView>
         </div>
-        <div className={bgText}>
+        {/* <div className={bgText}>
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">
             <div className="text-blue-900 mb-10">
               <div className="sm:w-full text-5xl xs:w-full text-5xl md:text-5xl">
@@ -78,9 +78,9 @@ export default function Banner({ data }) {
               </div>
             </div>
 
-            {/* <div className="xs: hidden sm:hidden md:block ">{ReactHtmlParser(frmData)}</div> */}
+            <div className="xs: hidden sm:hidden md:block ">{ReactHtmlParser(frmData)}</div>
           </div>
-        </div>
+        </div> */}
       </section>
     </>
   );
