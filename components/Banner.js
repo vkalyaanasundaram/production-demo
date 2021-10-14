@@ -40,7 +40,7 @@ export default function Banner({ data }) {
   return (
     <>
       <section className="relative">
-        {/* <div>
+        <div>
           {MobileBannerImage?.length > 0 && (
             <MobileView className={bgWrap}>
               <Image
@@ -72,7 +72,7 @@ export default function Banner({ data }) {
               />
             </BrowserView>
           )}
-        </div> */}
+        </div>
         <div className={bgText}>
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">
             <div className="text-blue-900 mb-10">
