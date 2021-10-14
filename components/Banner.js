@@ -42,24 +42,44 @@ export default function Banner({ data }) {
       <section className="relative">
         <div>
           {MobileBannerImage?.length > 0 && (
-            <MobileView className={bgWrap}>
-              <Image
-                alt=""
-                src={data?.mobileBannerImage?.sourceUrl}
-                layout="fill"
-                objectFit="cover"
-                quality={100}
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                  shimmer(700, 475)
-                )}`}
-              />
+            // <MobileView className={bgWrap}>
+            //   <Image
+            //     alt=""
+            //     src={data?.mobileBannerImage?.sourceUrl}
+            //     layout="fill"
+            //     objectFit="cover"
+            //     quality={100}
+            //     placeholder="blur"
+            //     blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            //       shimmer(700, 475)
+            //     )}`}
+            //   />
+            // </MobileView>
+            <MobileView>
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "500px",
+                }}
+              >
+                <Image
+                  alt="Mountains"
+                  src={data?.mobileBannerImage?.sourceUrl}
+                  layout="fill"
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                    shimmer(700, 475)
+                  )}`}
+                />
+              </div>
             </MobileView>
           )}
 
           {BannerImg?.length > 0 && (
             <BrowserView>
-              <Image
+              {/* <Image
                 alt=""
                 src={data?.bannerImage?.sourceUrl}
                 layout="fill"
@@ -69,7 +89,25 @@ export default function Banner({ data }) {
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(
                   shimmer(700, 475)
                 )}`}
-              />
+              /> */}
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "500px",
+                }}
+              >
+                <Image
+                  alt="Mountains"
+                  src={data?.bannerImage?.sourceUrl}
+                  layout="fill"
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                    shimmer(700, 475)
+                  )}`}
+                />
+              </div>
             </BrowserView>
           )}
         </div>
