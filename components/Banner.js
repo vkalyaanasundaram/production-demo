@@ -40,12 +40,11 @@ export default function Banner({ data }) {
   return (
     <>
       <section className="relative">
-        <div className={bgWrap}>
+        <div>
           {MobileBannerImage?.length > 0 && (
             <MobileView>
-              {" "}
               <Image
-                alt="Mountains"
+                alt=""
                 src={MobileBannerImage}
                 layout="fill"
                 objectFit="cover"
@@ -60,9 +59,8 @@ export default function Banner({ data }) {
 
           {BannerImg?.length > 0 && (
             <BrowserView>
-              {" "}
               <Image
-                alt="Mountains"
+                alt=""
                 src={BannerImg}
                 layout="fill"
                 objectFit="cover"
