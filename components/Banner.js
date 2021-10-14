@@ -41,23 +41,7 @@ export default function Banner({ data }) {
     <>
       <section className="relative">
         <div>
-          {MobileBannerImage?.length > 0 && (
-            <MobileView className={bgWrap}>
-              <Image
-                alt=""
-                src={MobileBannerImage}
-                layout="fill"
-                objectFit="cover"
-                quality={100}
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                  shimmer(700, 475)
-                )}`}
-              />
-            </MobileView>
-          )}
-
-          {BannerImg?.length > 0 && (
+          
             <BrowserView>
               <Image
                 alt=""
