@@ -59,7 +59,7 @@ export default function Banner({ data }) {
 
           {BannerImg?.length > 0 && (
             <BrowserView>
-              <Image
+              {/* <Image
                 alt=""
                 src={data?.bannerImage?.sourceUrl}
                 layout="fill"
@@ -69,7 +69,25 @@ export default function Banner({ data }) {
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(
                   shimmer(700, 475)
                 )}`}
-              />
+              /> */}
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "500px",
+                }}
+              >
+                <Image
+                  alt="Mountains"
+                  src={data?.bannerImage?.sourceUrl}
+                  layout="fill"
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                    shimmer(700, 475)
+                  )}`}
+                />
+              </div>
             </BrowserView>
           )}
         </div>
