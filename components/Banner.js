@@ -15,8 +15,8 @@ export default function Banner({ data }) {
   // const classNamees = useStyles();
   // console.log(data);
   // data?.ThreeColumnStaticPage?.banner
-  const BannerImg = data?.bannerImage?.sourceUrl;
-  const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
+  // const BannerImg = data?.bannerImage?.sourceUrl;
+  // const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
 
   const toBase64 = (str) =>
     typeof window === "undefined"
@@ -41,7 +41,7 @@ export default function Banner({ data }) {
     <>
       <section className="relative">
         <div>
-          {MobileBannerImage?.length > 0 && (
+          {data?.mobileBannerImage?.sourceUrl?.length > 0 && (
             // <MobileView className={bgWrap}>
             //   <Image
             //     alt=""
@@ -64,7 +64,7 @@ export default function Banner({ data }) {
                 }}
               >
                 <Image
-                  alt="Mountains"
+                  alt=""
                   src={data?.mobileBannerImage?.sourceUrl}
                   layout="fill"
                   objectFit="cover"
@@ -77,7 +77,7 @@ export default function Banner({ data }) {
             </MobileView>
           )}
 
-          {BannerImg?.length > 0 && (
+          {data?.bannerImage?.sourceUrl?.length > 0 && (
             <BrowserView>
               {/* <Image
                 alt=""
@@ -98,7 +98,7 @@ export default function Banner({ data }) {
                 }}
               >
                 <Image
-                  alt="Mountains"
+                  alt=""
                   src={data?.bannerImage?.sourceUrl}
                   layout="fill"
                   objectFit="cover"
