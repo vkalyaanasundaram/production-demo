@@ -45,7 +45,7 @@ export default function Banner({ data }) {
             <MobileView className={bgWrap}>
               <Image
                 alt=""
-                src={MobileBannerImage}
+                src={data?.mobileBannerImage?.sourceUrl}
                 layout="fill"
                 objectFit="cover"
                 quality={100}
@@ -61,7 +61,7 @@ export default function Banner({ data }) {
             <BrowserView>
               <Image
                 alt=""
-                src={BannerImg}
+                src={data?.bannerImage?.sourceUrl}
                 layout="fill"
                 objectFit="cover"
                 quality={100}
