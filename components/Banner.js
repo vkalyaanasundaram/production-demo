@@ -39,9 +39,8 @@ export default function Banner({ data }) {
 
   return (
     <>
-      BAnner
-      {/* <section className="relative">
-        <div>
+      <section className="relative">
+        {/* <div>
           {MobileBannerImage?.length > 0 && (
             <MobileView className={bgWrap}>
               <Image
@@ -73,7 +72,7 @@ export default function Banner({ data }) {
               />
             </BrowserView>
           )}
-        </div>
+        </div> */}
         <div className={bgText}>
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">
             <div className="text-blue-900 mb-10">
@@ -97,10 +96,12 @@ export default function Banner({ data }) {
               </div>
             </div>
 
-            <div className="xs: hidden sm:hidden md:block ">{ReactHtmlParser(frmData)}</div>
+            <div className="xs: hidden sm:hidden md:block ">
+              {/* {ReactHtmlParser(frmData)} */}
+            </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </>
   );
 }
