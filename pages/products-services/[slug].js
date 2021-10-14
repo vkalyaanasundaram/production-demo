@@ -103,32 +103,32 @@ export default function ProductPage() {
           <title>Products We Offer</title>
         </Head>
         <Header />
-        <div className="float-left clear-both w-full">
+        <div className="w-full">
           <ProductBanner data={IndividualBanner} />
         </div>
 
-        <div className="w-full clear-both float-left" ref={observe}>
+        <div className="w-full " ref={observe}>
           {inView && (
             <Content content={ProductContent} desc={ProductDescription} />
           )}
         </div>
-        <div className="w-full clear-both float-left" ref={observe}>
+        <div className="w-full " ref={observe}>
           {inView && <Requirements data={RequirementsData} />}
         </div>
-        <div className="w-full clear-both float-left" ref={observe}>
+        <div className="w-full " ref={observe}>
           {inView && <How data={HowToApply} />}
         </div>
-        <div className="w-full clear-both float-left" ref={observe}>
+        <div className="w-full " ref={observe}>
           {inView && <Who data={WhoShould} />}
         </div>
-        <div className="w-full clear-both float-left" ref={observe}>
+        <div className="w-full " ref={observe}>
           {inView && <GroupColumn />}
         </div>
-        <div className="w-full clear-both float-left" ref={observe}>
+        <div className="w-full" ref={observe}>
           {inView && <FAQ />}
         </div>
         {/* <div ref={observe}>{inView && <Footer />}</div> */}
-        <div className="float-left clear-both w-full" ref={observe}>
+        <div className="w-full" ref={observe}>
           {inView && <Footer />}
         </div>
       </>
@@ -138,11 +138,11 @@ export default function ProductPage() {
       <>
         <Header />
 
-        <div className="float-left clear-both w-full">
+        <div className="w-full">
           <InvoiceBannerNav data={InvoiceBanner} />
         </div>
         <div className="container">
-          <div className="float-left clear-both w-full" ref={observe}>
+          <div className="w-full mb-10" ref={observe}>
             {inView && (
               <InvoiceGroupColumn
                 columnone={InvoiceGroupColumnOne}
@@ -153,7 +153,7 @@ export default function ProductPage() {
         </div>
         <div className="container">
           <h3>READY TO APPLY? </h3>
-          <p>
+          <p className="mt-5">
             If invoice factoring seems like the right fit for you, let’s get you
             ready to apply. To begin the application, you will need to be able
             to provide an accounts receivable/payable aging report, articles of
@@ -167,6 +167,9 @@ export default function ProductPage() {
             our financing matching tool or give us a call at (800) 780-7133 to
             speak with one of our financing specialists.
           </p>
+        </div>
+        <div className="w-full mt-10" ref={observe}>
+          {inView && <Footer />}
         </div>
       </>
     );

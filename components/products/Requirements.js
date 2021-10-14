@@ -9,7 +9,7 @@ const Requirements = ({ data }) => {
   //   console.log(data)
   return (
     <>
-      <div className={contentNav}>
+      <div>
         <div className="container py-10 px-5">{ReactHtmlParser(data)}</div>
       </div>
     </>

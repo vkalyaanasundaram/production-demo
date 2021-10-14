@@ -18,7 +18,7 @@ const Footer = () => {
   if (!data) return <div>loading...</div>;
   return (
     <>
-      <div className={contentNav}>
+      <div>
         <div className="container py-2 px-5">
           <section className="float-left clear-both">
             <div className="container">
