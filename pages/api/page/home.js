@@ -20,10 +20,20 @@ export default async (req, resp) => {
               bannerButton
               bannerDescription
               bannerTitle
-              bannerImage{
+              bannerImage {
+                mediaDetails {
+                  width
+                  height
+                  file
+                }
                 sourceUrl
               }
               mobileBannerImage {
+                mediaDetails {
+                  width
+                  height
+                  file
+                }
                 sourceUrl
               }
             }

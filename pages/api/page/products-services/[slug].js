@@ -39,8 +39,12 @@ export default async (req, resp) => {
         productsService(idType: URI, id: $id) {
           individualProducts {
             banner {
+              mediaDetails {
+                file
+                width
+                height
+              }
               sourceUrl
-              altText
             }
             bannerForm
             bannerDescription
@@ -50,6 +54,11 @@ export default async (req, resp) => {
             }
             title
             mobileBanner {
+              mediaDetails {
+                file
+                height
+                width
+              }
               sourceUrl
             }
             tabs {

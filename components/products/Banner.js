@@ -14,7 +14,6 @@ export default function ProductsBanner({ data }) {
   const BannerImg = data?.pageBanner?.sourceUrl;
   const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
   const BannerList = data?.bannerListItems;
-  console.log(BannerList);
 
   const toBase64 = (str) =>
     typeof window === "undefined"
@@ -40,12 +39,14 @@ export default function ProductsBanner({ data }) {
       <section className="relative">
         <div className="opacity-40">
           {MobileBannerImage?.length > 0 && (
-            <MobileView>
+            <MobileView className={bgWrap}>
               <Image
-                alt="Mountains"
+                alt=""
                 src={MobileBannerImage}
-                layout="fill"
+                layout="responsive"
                 objectFit="cover"
+                width={data?.mobileBannerImage?.mediaDetails?.width}
+                height={data?.mobileBannerImage?.mediaDetails?.height}
                 quality={100}
                 placeholder="blur"
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(
@@ -56,11 +57,13 @@ export default function ProductsBanner({ data }) {
           )}
 
           {BannerImg?.length > 0 && (
-            <BrowserView>
+            <BrowserView className={bgWrap}>
               <Image
-                alt="Mountains"
+                alt=""
                 src={BannerImg}
-                layout="fill"
+                width={data?.pageBanner?.mediaDetails?.width}
+                height={data?.pageBanner?.mediaDetails?.height}
+                layout="responsive"
                 objectFit="cover"
                 quality={100}
                 placeholder="blur"

@@ -20,7 +20,7 @@ export default function IndividualBanner({ data }) {
   const BannerTitle = data?.title;
   const BannerDescription = data?.bannerDescription;
   const BannerList = data?.bannerList;
-
+  alert(BannerImg);
   const toBase64 = (str) =>
     typeof window === "undefined"
       ? Buffer.from(str).toString("base64")
@@ -46,12 +46,14 @@ export default function IndividualBanner({ data }) {
         <div className={bgWrap}>
           <div className="opacity-40">
             {MobileBannerImage?.length > 0 && (
-              <MobileView>
+              <MobileView className={bgWrap}>
                 <Image
-                  alt="Mountains"
+                  alt=""
                   src={MobileBannerImage}
-                  layout="fill"
+                  layout="responsive"
                   objectFit="cover"
+                  width={data?.mobileBannerImage?.mediaDetails?.width}
+                  height={data?.mobileBannerImage?.mediaDetails?.height}
                   quality={100}
                   placeholder="blur"
                   blurDataURL={`data:image/svg+xml;base64,${toBase64(
@@ -60,12 +62,15 @@ export default function IndividualBanner({ data }) {
                 />
               </MobileView>
             )}
+
             {BannerImg?.length > 0 && (
-              <BrowserView>
+              <BrowserView className={bgWrap}>
                 <Image
-                  alt="Mountains"
+                  alt=""
                   src={BannerImg}
-                  layout="fill"
+                  width={data?.banner?.mediaDetails?.width}
+                  height={data?.banner?.mediaDetails?.height}
+                  layout="responsive"
                   objectFit="cover"
                   quality={100}
                   placeholder="blur"
