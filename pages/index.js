@@ -13,7 +13,6 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
-import { contentNav } from "../styles/Home.module.css";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 

@@ -7,7 +7,6 @@ import useSWR from "swr";
 import { request } from "graphql-request";
 import { useState } from "react";
 import useInView from "react-cool-inview";
-import { contentNav } from "../styles/Home.module.css";
 
 // import Content from "../components/Content";
 import FinanceSolutions from "../components/FinanceSolution";
@@ -57,7 +56,7 @@ export default function SinglePage() {
         <>
           <Header />
           <Banner data={BannerData} />
-          <div className={contentNav}>
+          <div>
             <div className="container py-10 px-5">
               <div ref={observe}>
                 <Content data={ThreeColumnStaticPage?.cards} />
@@ -83,7 +82,7 @@ export default function SinglePage() {
         <>
           <Header />
           <Banner data={BannerData} />
-          <div className={contentNav}>
+          <div>
             <div className="container py-10 px-5">
               <div ref={observe}>
                 {inView && <Content data={ThreeColumnStaticPage?.cards} />}

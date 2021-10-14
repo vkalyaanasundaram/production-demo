@@ -42,7 +42,7 @@ export default function Banner({ data }) {
       <section className="relative">
         <div>
           {MobileBannerImage?.length > 0 && (
-            <MobileView>
+            <MobileView className={bgWrap}>
               <Image
                 alt=""
                 src={MobileBannerImage}

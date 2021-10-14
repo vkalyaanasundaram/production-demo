@@ -9,7 +9,7 @@ const HowToApply = ({ data }) => {
   //   console.log(data)
   return (
     <>
-      <div className={contentNav}>
+      <div>
         <div className="container py-10 px-5">
           <div className="container">{ReactHtmlParser(data)}</div>
         </div>
