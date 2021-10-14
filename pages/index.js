@@ -87,7 +87,7 @@ export default function Home() {
     <>
       <Header />
       <section>
-        {/* <Banner data={data?.page?.ThreeColumnStaticPage?.banner} /> */}
+        <Banner data={data?.page?.ThreeColumnStaticPage?.banner} />
       </section>
       <section ref={observe}>
         {inView && <Content data={data?.page?.ThreeColumnStaticPage?.cards} />}
