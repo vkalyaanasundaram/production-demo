@@ -15,8 +15,8 @@ export default function Banner({ data }) {
   // const classNamees = useStyles();
   // console.log(data);
   // data?.ThreeColumnStaticPage?.banner
-  // const BannerImg = data?.bannerImage?.sourceUrl;
-  // const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
+  const BannerImg = data?.bannerImage?.sourceUrl;
+  const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
 
   const toBase64 = (str) =>
     typeof window === "undefined"
@@ -40,74 +40,40 @@ export default function Banner({ data }) {
   return (
     <>
       <section className="relative">
-        <div>
-          {data?.mobileBannerImage?.sourceUrl?.length > 0 && (
-            // <MobileView className={bgWrap}>
-            //   <Image
-            //     alt=""
-            //     src={data?.mobileBannerImage?.sourceUrl}
-            //     layout="fill"
-            //     objectFit="cover"
-            //     quality={100}
-            //     placeholder="blur"
-            //     blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            //       shimmer(700, 475)
-            //     )}`}
-            //   />
-            // </MobileView>
-            <MobileView>
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  height: "500px",
-                }}
-              >
-                <Image
-                  alt=""
-                  src={data?.mobileBannerImage?.sourceUrl}
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                    shimmer(700, 475)
-                  )}`}
-                />
-              </div>
+        <div className="opacity-40">
+          {MobileBannerImage?.length > 0 && (
+            <MobileView className={bgWrap}>
+              <Image
+                alt=""
+                src={data?.mobileBannerImage?.sourceUrl}
+                layout="responsive"
+                objectFit="cover"
+                width={data?.mobileBannerImage?.mediaDetails?.width}
+                height={data?.mobileBannerImage?.mediaDetails?.height}
+                quality={100}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+              />
             </MobileView>
           )}
 
-          {data?.bannerImage?.sourceUrl?.length > 0 && (
-            <BrowserView>
-              {/* <Image
+          {BannerImg?.length > 0 && (
+            <BrowserView className={bgWrap}>
+              <Image
                 alt=""
                 src={data?.bannerImage?.sourceUrl}
-                layout="fill"
+                width={data?.bannerImage?.mediaDetails?.width}
+                height={data?.bannerImage?.mediaDetails?.height}
+                layout="responsive"
                 objectFit="cover"
                 quality={100}
                 placeholder="blur"
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(
                   shimmer(700, 475)
                 )}`}
-              /> */}
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  height: "500px",
-                }}
-              >
-                <Image
-                  alt=""
-                  src={data?.bannerImage?.sourceUrl}
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                    shimmer(700, 475)
-                  )}`}
-                />
-              </div>
+              />
             </BrowserView>
           )}
         </div>
@@ -117,10 +83,10 @@ export default function Banner({ data }) {
               <div className="sm:w-full text-5xl xs:w-full text-5xl md:text-5xl">
                 {data?.bannerTitle}
               </div>
-              <div className="xs:text-xl m-10 lg:text-2xl text-green-900">
+              <div className="xs:text-xs m-10 lg:text-2xl text-green-900">
                 {ReactHtmlParser(data?.bannerDescription)}
               </div>
-              <div className="sm:text-lg xs:text-sm mt-5 md:text-2xl text-blue-900">
+              <div className="xs:text-xs sm:text-lg xs:text-sm mt-5 md:text-2xl text-blue-900">
                 {ReactHtmlParser(data?.bannerButton)}
               </div>
 

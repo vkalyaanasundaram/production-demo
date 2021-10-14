@@ -22,9 +22,19 @@ export default async (req, resp) => {
                   bannerTitle
                   fieldGroupName
                   bannerImage {
+                    mediaDetails {
+                      width
+                      height
+                      file
+                    }
                     sourceUrl
                   }
                   mobileBannerImage {
+                    mediaDetails {
+                      width
+                      height
+                      file
+                    }
                     sourceUrl
                   }
               }
@@ -47,11 +57,20 @@ export default async (req, resp) => {
             }
             productsAcf {
                 pageBanner {
+                    mediaDetails {
+                      width
+                      height
+                      file
+                    }
                     sourceUrl
-                    altText
                 }
                 mobileBannerImage {
-                  sourceUrl
+                  mediaDetails {
+                      width
+                      height
+                      file
+                    }
+                    sourceUrl
                 }
                 bannerListItems {
                   title
