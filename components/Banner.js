@@ -39,23 +39,42 @@ export default function Banner({ data }) {
 
   return (
     <>
-      <section className="relative">
+      BAnner
+      {/* <section className="relative">
         <div>
-          <BrowserView>
-            <Image
-              alt=""
-              src={BannerImg}
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(700, 475)
-              )}`}
-            />
-          </BrowserView>
+          {MobileBannerImage?.length > 0 && (
+            <MobileView className={bgWrap}>
+              <Image
+                alt=""
+                src={MobileBannerImage}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+              />
+            </MobileView>
+          )}
+
+          {BannerImg?.length > 0 && (
+            <BrowserView>
+              <Image
+                alt=""
+                src={BannerImg}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+              />
+            </BrowserView>
+          )}
         </div>
-        {/* <div className={bgText}>
+        <div className={bgText}>
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">
             <div className="text-blue-900 mb-10">
               <div className="sm:w-full text-5xl xs:w-full text-5xl md:text-5xl">
@@ -80,8 +99,8 @@ export default function Banner({ data }) {
 
             <div className="xs: hidden sm:hidden md:block ">{ReactHtmlParser(frmData)}</div>
           </div>
-        </div> */}
-      </section>
+        </div>
+      </section> */}
     </>
   );
 }
