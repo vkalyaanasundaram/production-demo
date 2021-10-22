@@ -4,12 +4,14 @@ import Head from "next/head";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { relayStylePagination } from "@apollo/client/utilities";
+import Error from "./_error";
+
 const client = new ApolloClient({
   uri: process.env.WORDPRESS_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, statusCode }) {
   const cache = new InMemoryCache({
     typePolicies: {
       Query: {
@@ -24,14 +26,17 @@ export default function App({ Component, pageProps }) {
     uri: process.env.WORDPRESS_GRAPHQL_ENDPOINT,
     cache,
   });
+  if (statusCode) {
+    <Error />;
+  } else {
+    return (
+      <ApolloProvider client={client}>
+        {/* <Analytics /> */}
 
-  return (
-    <ApolloProvider client={client}>
-      {/* <Analytics /> */}
-
-      <Component {...pageProps} />
-    </ApolloProvider>
-  );
+        <Component {...pageProps} />
+      </ApolloProvider>
+    );
+  }
 }
 
 export function reportWebVitals(metric) {

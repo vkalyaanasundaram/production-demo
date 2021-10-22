@@ -14,8 +14,6 @@ import {
   isMobile,
 } from "react-device-detect";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
 const Header = dynamic(() => import("../components/Header"), {
   loading: function ld() {
     return <p>Loading...</p>;
@@ -51,6 +49,7 @@ const Footer = dynamic(() => import("../components/Footer"), {
 });
 
 export default function Home() {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR("/api/page/home", fetcher);
 
   let { asPath, pathname } = useRouter();

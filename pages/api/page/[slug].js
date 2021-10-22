@@ -47,9 +47,8 @@ export default async (req, resp) => {
               }
             }
             ACFcontact {
-              form
               image {
-                  sourceUrl
+                sourceUrl
               }
               mobileImage {
                 sourceUrl
@@ -103,9 +102,13 @@ export default async (req, resp) => {
       },
     }),
   });
-
+  // if (resp.status(500)) {
+  //   // resp.status(500).json({ message: `User with id not found.` });
+  //   resp.redirect("./500");
+  // } else {
   //   console.log(json);
   const json = await data.json();
   // console.log(json);
-  resp.json(json.data.page);
+  resp.json(json?.data?.page);
+  // }
 };

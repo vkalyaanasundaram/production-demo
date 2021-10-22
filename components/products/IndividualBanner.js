@@ -20,7 +20,6 @@ export default function IndividualBanner({ data }) {
   const BannerTitle = data?.title;
   const BannerDescription = data?.bannerDescription;
   const BannerList = data?.bannerList;
-  alert(BannerImg);
   const toBase64 = (str) =>
     typeof window === "undefined"
       ? Buffer.from(str).toString("base64")

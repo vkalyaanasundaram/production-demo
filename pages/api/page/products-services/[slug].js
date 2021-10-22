@@ -48,10 +48,6 @@ export default async (req, resp) => {
             }
             bannerForm
             bannerDescription
-            bannerList {
-              bannerTitle
-              lists
-            }
             title
             mobileBanner {
               mediaDetails {
@@ -61,16 +57,15 @@ export default async (req, resp) => {
               }
               sourceUrl
             }
-            tabs {
-              howToApply
-              requirements
-              whoIsThisFor
-            }
             businessLoanDescription
             productsContent
             requirements
             howToApply
             whoShould
+            bannerListItems {
+              title
+              listItems
+            }
           }
         }
     }`;
@@ -86,7 +81,9 @@ export default async (req, resp) => {
     }),
   });
 
+  const errorCode = resp.ok ? false : resp.statusCode;
+
   const json = await data.json();
-  // console.log(json);
+  console.log(json);
   resp.json(json?.data?.productsService);
 };
