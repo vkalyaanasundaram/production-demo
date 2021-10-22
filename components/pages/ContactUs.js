@@ -25,8 +25,6 @@ const shimmer = (w, h) => `
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
 
-const Header = import("../Header");
-
 const ContactUs = (data) => {
   const contactData = data;
 
@@ -47,10 +45,9 @@ const ContactUs = (data) => {
     });
   });
 
-  // console.log(contactData);
+  console.log(contactData);
   return (
     <div className="bg-gray-100">
-      <Header />
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Image

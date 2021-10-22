@@ -3,6 +3,13 @@ export default async (req, resp) => {
     query: { slug },
   } = req;
 
+  resp.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
+  const errorCode = resp.ok ? false : resp.statusCode;
+
   const QUERY_FOOTER_QRY = `
         query ProductServiceQry {
         productsServices(where: {status: PUBLISH, orderby: {field: TITLE, order: ASC}}) {

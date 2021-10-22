@@ -3,7 +3,22 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/:all*(svg|jpg|png)",
+        locale: false,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=9999999999, must-revalidate",
+          },
+        ],
+      },
+    ];
+  },
   images: {
+    minimumCacheTTL: 60,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     domains: ["kap-staging.us"],
   },
@@ -13,6 +28,9 @@ const nextConfig = {
     WORDPRESS_URL: "https://kap-staging.us/",
     MAPBOX_TOKEN:
       "pk.eyJ1Ijoia2FwaXR1cyIsImEiOiJjanR5and6MjYwMXltNDN0MWxnNTFoMGxpIn0.rbpYqdyv1o5OzsDLva85Sg",
+    // WP_HEADLESS_SECRET: "f07a107b-9685-4a02-a3d9-6df5ba581b29",
+    // WORDPRESS_GRAPHQL_ENDPOINT: "https://stagingdev-kap.com/graphql",
+    // WORDPRESS_URL: "https://stagingdev-kap.com",
   },
 };
 
