@@ -3,20 +3,20 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 const nextConfig = {
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/:all*(svg|jpg|png)",
-  //       locale: false,
-  //       headers: [
-  //         {
-  //           key: "Cache-Control",
-  //           value: "public, max-age=9999999999, must-revalidate",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
+  async headers() {
+    return [
+      {
+        source: "/:all*(svg|jpg|png)",
+        locale: false,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=9999999999, must-revalidate",
+          },
+        ],
+      },
+    ];
+  },
   images: {
     minimumCacheTTL: 60,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
