@@ -9,14 +9,19 @@ import {
   isBrowser,
   isMobile,
 } from "react-device-detect";
-import { bgWrap, bgText } from "../styles/Home.module.css";
+import {
+  bgWrap,
+  bgText,
+  heroDesktopImage,
+  heroMobileImage,
+} from "../styles/Home.module.css";
 
 export default function Banner({ data }) {
   // const classNamees = useStyles();
-  // console.log(data);
   // data?.ThreeColumnStaticPage?.banner
-  const BannerImg = data?.bannerImage?.sourceUrl;
-  const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
+  // const BannerImg = data?.bannerImage?.sourceUrl;
+  // const MobileBannerImage = data?.mobileBannerImage?.sourceUrl;
+  // alert(data?.bannerImage?.sourceUrl);
 
   const toBase64 = (str) =>
     typeof window === "undefined"
@@ -37,32 +42,17 @@ export default function Banner({ data }) {
     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
   </svg>`;
 
+  // let imageSrc =
+  //   data?.MobileBannerImage?.length && data?.bannerImage?.sourceUrl
+  //     ? { uri: data?.mobileBannerImage?.sourceUrl }
+  //     : data?.bannerImage?.sourceUrl;
   return (
     <>
       <section className="relative">
         <div className="opacity-40">
-          {MobileBannerImage?.length > 0 && (
-            <MobileView className={bgWrap}>
+          <div className={heroDesktopImage}>
+            {data?.bannerImage?.sourceUrl?.length > 0 && (
               <Image
-                alt=""
-                src={data?.mobileBannerImage?.sourceUrl}
-                layout="responsive"
-                objectFit="cover"
-                width={data?.mobileBannerImage?.mediaDetails?.width}
-                height={data?.mobileBannerImage?.mediaDetails?.height}
-                quality={100}
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                  shimmer(700, 475)
-                )}`}
-              />
-            </MobileView>
-          )}
-
-          {BannerImg?.length > 0 && (
-            <BrowserView className={bgWrap}>
-              <Image
-                alt=""
                 src={data?.bannerImage?.sourceUrl}
                 width={data?.bannerImage?.mediaDetails?.width}
                 height={data?.bannerImage?.mediaDetails?.height}
@@ -74,8 +64,24 @@ export default function Banner({ data }) {
                   shimmer(700, 475)
                 )}`}
               />
-            </BrowserView>
-          )}
+            )}
+          </div>
+          <div className={heroMobileImage}>
+            {data?.mobileBannerImage?.sourceUrl?.length > 0 && (
+              <Image
+                src={data?.mobileBannerImage?.sourceUrl}
+                width={data?.bannerImage?.mediaDetails?.width}
+                height={data?.bannerImage?.mediaDetails?.height}
+                layout="responsive"
+                objectFit="cover"
+                quality={100}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+              />
+            )}
+          </div>
         </div>
         <div className={bgText}>
           <div className="xs:grid col-auto lg:grid grid-cols-2 gap-1 p-3">

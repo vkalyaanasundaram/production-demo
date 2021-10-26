@@ -12,6 +12,17 @@
   text-align: left;
   padding-top: 3vh;
 }
+.heroDesktopImage {
+  display: none !important;
+}
+@media (min-width: 769px) {
+  .heroDesktopImage {
+    display: block !important;
+  }
+  .heroMobileImage {
+    display: none !important;
+  }
+}
 .contentNav {
   /* float: left;
   margin-top: 700px; */
