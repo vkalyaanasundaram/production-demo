@@ -1,14 +1,10 @@
 import useSWR from "swr";
-import { request } from "graphql-request";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
+import { useState } from "react";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Header = () => {
-  const { asPath, pathname } = useRouter();
   const [isMenuVisible, setMenuVisibility] = useState(false);
   const { data, error } = useSWR("/api/page/header", fetcher);
 
