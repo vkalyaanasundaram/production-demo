@@ -1,8 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 
 export default function ProductsContainer({ data }) {
   const router = useRouter();

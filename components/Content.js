@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ReactHtmlParser, { htmlparser2 } from "react-html-parser";
+import ReactHtmlParser from "react-html-parser";
 import Image from "next/image";
 
 import { ContentNav, StaticContent } from "../styles/Home.module.css";

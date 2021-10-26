@@ -49,7 +49,7 @@ export default async (req, resp) => {
             bannerForm
             bannerDescription
             title
-            mobileBanner {
+            mobileBannerImage {
               mediaDetails {
                 file
                 height
@@ -84,6 +84,6 @@ export default async (req, resp) => {
   const errorCode = resp.ok ? false : resp.statusCode;
 
   const json = await data.json();
-  console.log(json);
+  // console.log(json);
   resp.json(json?.data?.productsService);
 };

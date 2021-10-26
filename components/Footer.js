@@ -1,13 +1,6 @@
 import Link from "next/link";
 import useSWR from "swr";
-import { request } from "graphql-request";
 import { useRouter } from "next/router";
-import {
-  FooterNav,
-  FooterContent,
-  contentNav,
-} from "../styles/Home.module.css";
-
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Footer = () => {
