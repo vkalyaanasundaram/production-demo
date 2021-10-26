@@ -55,39 +55,39 @@ export default async (req, resp) => {
               }
             }
             productsAcf {
-                pageBanner {
-                    mediaDetails {
-                      width
-                      height
-                      file
-                    }
-                    sourceUrl
+              mobileBannerImage {
+                mediaDetails {
+                  width
+                  height
+                  file
                 }
-                mobileBannerImage {
-                  mediaDetails {
-                      width
-                      height
-                      file
-                    }
-                    sourceUrl
+                sourceUrl
+              }
+              bannerListItems {
+                title
+                listsItems
+              }
+              pageBannerDescription
+              pageBannerTitle
+              ourGoal
+              productsCards {
+                cardContent
+                cardTitle
+                svgIcon {
+                  sourceUrl
                 }
-                bannerListItems {
-                  title
-                  listsItems
+                cardButton
+                cardSlug
+              }
+              getStartedToday
+              pageBanner {
+                mediaDetails {
+                  width
+                  height
+                  file
                 }
-                pageBannerDescription
-                pageBannerTitle
-                ourGoal
-                productsCards {
-                    cardContent
-                    cardTitle
-                    svgIcon {
-                      sourceUrl
-                    }
-                    cardButton
-                    cardSlug
-                }
-                getStartedToday
+                sourceUrl
+              }
             }
         }
     }`;
