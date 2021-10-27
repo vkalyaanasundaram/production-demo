@@ -26,17 +26,14 @@ export default function App({ Component, pageProps, statusCode }) {
     uri: process.env.WORDPRESS_GRAPHQL_ENDPOINT,
     cache,
   });
-  if (statusCode) {
-    <Error />;
-  } else {
-    return (
-      <ApolloProvider client={client}>
-        {/* <Analytics /> */}
 
-        <Component {...pageProps} />
-      </ApolloProvider>
-    );
-  }
+  return (
+    <ApolloProvider client={client}>
+      {/* <Analytics /> */}
+
+      <Component {...pageProps} />
+    </ApolloProvider>
+  );
 }
 
 export function reportWebVitals(metric) {
