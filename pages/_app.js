@@ -4,7 +4,6 @@ import Head from "next/head";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { relayStylePagination } from "@apollo/client/utilities";
-import Error from "./_error";
 
 const client = new ApolloClient({
   uri: process.env.WORDPRESS_GRAPHQL_ENDPOINT,
