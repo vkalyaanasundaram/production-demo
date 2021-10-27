@@ -63,6 +63,7 @@ export default function Banner({ data }) {
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(
                   shimmer(700, 475)
                 )}`}
+                alt=""
               />
             )}
           </div>
@@ -79,6 +80,7 @@ export default function Banner({ data }) {
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(
                   shimmer(700, 475)
                 )}`}
+                alt=""
               />
             )}
           </div>
