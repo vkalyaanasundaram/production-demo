@@ -40,6 +40,12 @@ export default async (req, resp) => {
               }
               financeSolution
             }
+            accordionData {
+              accordion {
+                  accordionContent
+                  accordionTitle
+              }
+            }
             
             productsAcf {
               mobileBannerImage {
