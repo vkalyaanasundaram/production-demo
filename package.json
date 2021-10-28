@@ -11,10 +11,12 @@
   "dependencies": {
     "@next/bundle-analyzer": "^11.1.2",
     "@svgr/webpack": "^5.5.0",
+    "@zeit/next-css": "^1.0.1",
     "cross-env": "^7.0.3",
     "eslint-config-next": "^11.1.2",
     "next": "latest",
     "next-plugin-preact": "^3.0.6",
+    "next-purgecss": "^4.0.0",
     "next-themes": "^0.0.15",
     "preact": "^10.5.15",
     "preact-render-to-string": "^5.1.19",

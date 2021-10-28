@@ -4,13 +4,12 @@ import Header from "../components/Header";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { request } from "graphql-request";
 import { useState } from "react";
 import useInView from "react-cool-inview";
 
 // import Content from "../components/Content";
 import FinanceSolutions from "../components/FinanceSolution";
-import ContactUs from "../components/pages/ContactUs";
+// import ContactUs from "../components/pages/ContactUs";
 import MediaCenter from "../components/pages/MediaCenter";
 import Banner from "../components/Banner";
 import ProductBanner from "../components/products/Banner";
@@ -77,29 +76,7 @@ export default function SinglePage() {
           <div ref={observe}>{inView && <Footer />}</div>
         </>
       );
-    case "/partner":
-      return (
-        <>
-          <Header />
-          <Banner data={BannerData} />
-          <div>
-            <div className="container py-10 px-5">
-              <div ref={observe}>
-                {inView && <Content data={ThreeColumnStaticPage?.cards} />}
-              </div>
-            </div>
-          </div>
-          <div ref={observe}>{inView && <Footer />}</div>
-        </>
-      );
-    case "/contact-us":
-      return (
-        <>
-          <Header />
-          <ContactUs data={ACFcontact} />
-          <div ref={observe}>{inView && <Footer />}</div>
-        </>
-      );
+
     default:
       return (
         <>

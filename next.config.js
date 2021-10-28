@@ -22,7 +22,6 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     domains: ["kap-staging.us"],
   },
-  
   env: {
     WP_HEADLESS_SECRET: "adb05f33-6f44-4433-9e79-9f995018b28a",
     WORDPRESS_GRAPHQL_ENDPOINT: "https://kap-staging.us/graphql",
