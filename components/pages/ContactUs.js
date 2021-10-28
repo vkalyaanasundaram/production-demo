@@ -27,7 +27,6 @@ const shimmer = (w, h) => `
 
 const ContactUs = (data) => {
   const contactData = data;
-
   mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 
   const { observe, inView } = useInView({
@@ -45,23 +44,25 @@ const ContactUs = (data) => {
     });
   });
 
-  console.log(contactData);
   return (
     <div className="bg-gray-100">
       <div className="grid grid-cols-2 gap-4">
-        <div>
-          <Image
-            src={contactData?.data.image?.sourceUrl}
-            alt=""
-            width={700}
-            height={500}
-            className={"image"}
-            quality={100}
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(700, 475)
-            )}`}
-          />
+        <div className="xs:w-full md:w-1/2">
+          {contactData?.data?.image?.mediaItemUrl?.length > 0 && (
+            <Image
+              src={contactData?.data?.image?.mediaItemUrl}
+              alt=""
+              width={contactData?.data?.image?.mediaDetails?.width}
+              height={contactData?.data?.image?.mediaDetails?.height}
+              layout="responsive"
+              objectFit="cover"
+              quality={100}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(700, 475)
+              )}`}
+            />
+          )}
         </div>
         {/* <div>{ReactHtmlParser(contactData.data.form)}</div> */}
       </div>
