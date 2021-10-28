@@ -40,20 +40,7 @@ export default async (req, resp) => {
               }
               financeSolution
             }
-            accordionData {
-              accordion {
-                  accordionContent
-                  accordionTitle
-              }
-            }
-            ACFcontact {
-              image {
-                sourceUrl
-              }
-              mobileImage {
-                sourceUrl
-              }
-            }
+            
             productsAcf {
               mobileBannerImage {
                 mediaDetails {
