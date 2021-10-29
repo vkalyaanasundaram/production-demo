@@ -2,6 +2,8 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
 const nextConfig = {
   async headers() {
     return [
@@ -33,5 +35,18 @@ const nextConfig = {
     // WORDPRESS_URL: "https://stagingdev-kap.com",
   },
 };
-
+module.exports = {
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    if (ANALYZE) {
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: "server",
+          analyzerPort: isServer ? 8888 : 8889,
+          openAnalyzer: true,
+        })
+      );
+    }
+    return config;
+  },
+};
 module.exports = withBundleAnalyzer(nextConfig);
