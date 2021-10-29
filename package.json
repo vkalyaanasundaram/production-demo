@@ -16,6 +16,7 @@
     "cross-env": "^7.0.3",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "eslint-config-next": "^11.1.2",
+    "mapbox-gl": "^2.5.1",
     "next": "latest",
     "next-plugin-preact": "^3.0.6",
     "next-purgecss": "^4.0.0",

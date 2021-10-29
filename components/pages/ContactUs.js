@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import useInView from "react-cool-inview";
 // var mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
+const Map = dynamic(() => import("mapbox-gl/dist/mapbox-gl.js"), {
+  ssr: false,
+});
 
 const toBase64 = (str) =>
   typeof window === "undefined"
@@ -27,7 +30,7 @@ const shimmer = (w, h) => `
 
 const ContactUs = (data) => {
   const contactData = data;
-  // mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+  Map.accessToken = process.env.MAPBOX_TOKEN;
 
   const { observe, inView } = useInView({
     onEnter: ({ unobserve }) => unobserve(), // only run once
@@ -35,13 +38,13 @@ const ContactUs = (data) => {
   });
 
   useEffect(() => {
-    // const map = new mapboxgl.Map({
-    //   container: "kapitus-map",
-    //   style: "mapbox://styles/kapitus/cjtyljmho3vok1fntmnu0c8hq",
-    //   /*center: [-73.98387980000001, 40.75704],*/
-    //   center: [-1.98387980000001, 30.75704],
-    //   zoom: 2,
-    // });
+    const map = new mapboxgl.Map({
+      container: "kapitus-map",
+      style: "mapbox://styles/kapitus/cjtyljmho3vok1fntmnu0c8hq",
+      /*center: [-73.98387980000001, 40.75704],*/
+      center: [-1.98387980000001, 30.75704],
+      zoom: 2,
+    });
   });
 
   return (
@@ -66,7 +69,7 @@ const ContactUs = (data) => {
         </div>
         {/* <div>{ReactHtmlParser(contactData.data.form)}</div> */}
       </div>
-      {/* <div id="kapitus-map" className="w-full" style={{ height: 500 }}></div> */}
+      <div id="kapitus-map" className="w-full" style={{ minHeight: 500 }}></div>
     </div>
   );
 };
