@@ -41,7 +41,6 @@
     "eslint": "^7.32.0",
     "graphql": "^15.6.0",
     "graphql-request": "^3.5.0",
-    "mapbox-gl": "^2.5.0",
     "postcss": "^8.1.10",
     "swr": "^1.0.1",
     "tailwindcss": "^2.1.1",
