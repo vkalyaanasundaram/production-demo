@@ -42,6 +42,7 @@ export default function SinglePage() {
   const ThreeColumnStaticPage = data?.ThreeColumnStaticPage;
   const BannerData = data?.ThreeColumnStaticPage?.banner;
   const AccordionData = data?.accordionData;
+  // console.log(ProductsData);
 
   return (
     <>
@@ -56,22 +57,18 @@ export default function SinglePage() {
       </div>
       <div ref={observe}>{inView && <Footer />}</div>
     </>
-  );
 
-  // default:
-  //   return (
-  //     <>
-  //       <Header />
-  //       <Banner data={BannerData} />
-  //       <div className={contentNav}>
-  //         <div className="container py-10 px-5">
-  //           <div ref={observe}>
-  //             {inView && <Content data={ThreeColumnStaticPage?.cards} />}
-  //           </div>
-  //         </div>
-  //       </div>
-  //       <div ref={observe}>{inView && <FinanceSolutions />}</div>
-  //       <div ref={observe}>{inView && <Footer />}</div>
-  //     </>
-  //   );
+    //   <Header />
+    //   <Banner data={BannerData} />
+    //   <div className={contentNav}>
+    //     <div className="container py-10 px-5">
+    //       <div ref={observe}>
+    //         {inView && <Content data={ThreeColumnStaticPage?.cards} />}
+    //       </div>
+    //     </div>
+    //   </div>
+    //   <div ref={observe}>{inView && <FinanceSolutions />}</div>
+    //   <div ref={observe}>{inView && <Footer />}</div>
+    // </>
+  );
 }
